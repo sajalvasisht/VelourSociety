@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velour Society</title>
+  <style>
+    /* --- Font Imports & Resets --- */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* --- 1. General Luxury Enhancements --- */
+    :root {
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --color-gold: #d4af37;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem; /* Fixes fixed header overlap on scroll */
+    }
+
+    body {
+      font-family: var(--font-heading);
+      background: #fff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    p, button, input, .menu li a, footer {
+      font-family: var(--font-body);
+    }
+
+    /* --- Navbar --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu li a:hover {
+      color: var(--color-gold);
+    }
+
+    .icons input {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .icons input::placeholder {
+      color: #eee;
+    }
+    .icons input:focus {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .icons a {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      z-index: 1;
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: 1px solid #fff;
+      border-radius: 30px;
+      background: #fff;
+      color: #111;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .hero button:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: #fff;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+    }
+
+    /* --- Categories Section --- */
+    .categories {
+      padding: 6rem 4rem; /* More padding */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      background: #fff;
+    }
+
+    .category-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      cursor: pointer;
+      /* Using a subtle border instead of shadow for a cleaner look */
+      border: 1px solid #e5e5e5; 
+      border-radius: 0; /* Sharp corners are often more high-fashion */
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .category-card h2 {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #fff;
+      font-size: 2rem;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    /* --- 2. Revamped Featured Collection --- */
+    .featured-revamped {
+      padding: 6rem 4rem; /* More padding = more luxury */
+      background: #fff;
+      text-align: center;
+    }
+
+    .featured-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .featured-header h2 {
+      font-size: 2.5rem;
+      margin: 0;
+      text-align: left;
+    }
+
+    .view-all-link {
+      font-family: var(--font-body);
+      text-decoration: none;
+      color: #111;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .view-all-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #111;
+      transition: width 0.4s ease;
+    }
+
+    .view-all-link:hover::after {
+      width: 100%;
+    }
+
+    .product-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem; /* More space between items */
+    }
+
+    .showcase-item {
+      text-align: left;
+    }
+
+    .showcase-image {
+      overflow: hidden; /* For the hover effect */
+      background: #f9f9f9; /* A light background in case images are transparent */
+    }
+
+    .showcase-image img {
+      width: 100%;
+      height: auto; /* THIS IS THE KEY FIX! Let the image height be natural */
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .showcase-item:hover .showcase-image img {
+      transform: scale(1.05); /* A subtle, slower zoom for elegance */
+    }
+
+    .showcase-info {
+      padding-top: 1.5rem;
+    }
+
+    .showcase-info h3 {
+      font-size: 1.4rem;
+      font-weight: 400; /* Lighter font-weight feels more refined */
+      margin-bottom: 0.5rem;
+    }
+
+    .showcase-info p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+
+    /* --- 3. A More Sophisticated Footer --- */
+    footer {
+      background: #fff;
+      color: #555;
+      text-align: center;
+      padding: 4rem 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    footer p {
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #111;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop class="video-bg">
+    <source src="fashion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Velour Society</div>
+      <ul class="menu">
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+      <div class="icons">
+        <input type="text" placeholder="Search...">
+        <a href="#">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>The Fall 2025 Collection</h1>
+    <p>Experience timeless luxury with Velour Society</p>
+    <button>Shop Now</button>
+  </section>
+
+  <section class="categories">
+    <div class="category-card">
+      <img src="men.jpeg" alt="Men">
+      <h2>Men</h2>
+    </div>
+    <div class="category-card">
+      <img src="female.jpeg" alt="Women">
+      <h2>Women</h2>
+    </div>
+    <div class="category-card">
+      <img src="accessory.jpeg" alt="Accessories">
+      <h2>Accessories</h2>
+    </div>
+  </section>
+
+  <section class="featured-revamped">
+    <div class="featured-header">
+      <h2>Featured Collection</h2>
+      <a href="#" class="view-all-link">View All</a>
+    </div>
+
+    <div class="product-showcase">
+      <div class="showcase-item">
+        <div class="showcase-image">
+          <img src="product1.jpg" alt="Classic Wool Coat">
+        </div>
+        <div class="showcase-info">
+          <h3>Classic Wool Coat</h3>
+          <p>$450</p>
+        </div>
+      </div>
+
+      <div class="showcase-item">
+        <div class="showcase-image">
+          <img src="product2.jpg" alt="Velour Leather Bag">
+        </div>
+        <div class="showcase-info">
+          <h3>Velour Leather Bag</h3>
+          <p>$320</p>
+        </div>
+      </div>
+
+      <div class="showcase-item">
+        <div class="showcase-image">
+          <img src="product3.jpg" alt="Silk Evening Dress">
+        </div>
+        <div class="showcase-info">
+          <h3>Silk Evening Dress</h3>
+          <p>$780</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Velour Society. All Rights Reserved.</p>
+    <p>
+      <a href="#">About</a> |
+      <a href="#">Contact</a> |
+      <a href="#">Privacy Policy</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
