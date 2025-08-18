@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,13 +92,13 @@
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     }
 
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     }
 
     .hero button {
@@ -116,16 +117,18 @@
       color: #fff;
     }
 
-    /* Background Video */
     .video-bg {
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center;
       z-index: -1;
+
     }
+
 
     /* Categories Section */
     .categories {
@@ -161,7 +164,7 @@
       left: 20px;
       color: #fff;
       font-size: 2rem;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
     }
 
     /* Featured Products Section */
@@ -186,7 +189,7 @@
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
@@ -196,8 +199,10 @@
 
     .product-card img {
       width: 100%;
-      height: 280px;
+      height: 400px;
       object-fit: cover;
+      object-position: center;
+      border-radius: 12px 12px 0 0;
     }
 
     .product-card .info {
@@ -235,6 +240,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Background Video -->
@@ -269,15 +275,15 @@
   <!-- Categories -->
   <section class="categories">
     <div class="category-card">
-      <img src="men.jpg" alt="Men">
+      <img src="men.jpeg" alt="Men">
       <h2>Men</h2>
     </div>
     <div class="category-card">
-      <img src="women.jpg" alt="Women">
+      <img src="female.jpeg" alt="Women">
       <h2>Women</h2>
     </div>
     <div class="category-card">
-      <img src="accessories.jpg" alt="Accessories">
+      <img src="accessory.jpeg" alt="Accessories">
       <h2>Accessories</h2>
     </div>
   </section>
@@ -321,4 +327,5 @@
   </footer>
 
 </body>
+
 </html>
