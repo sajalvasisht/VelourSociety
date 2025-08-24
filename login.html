@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Velour Society</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000, #444);
+      color: #333;
+    }
+    header {
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 12px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    nav ul li a:hover {
+      color: gold;
+    }
+
+    .login-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px; /* to avoid navbar overlap */
+    }
+    .login-box {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .login-box h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+      color: black;
+    }
+    .login-box p {
+      margin-bottom: 25px;
+      color: #666;
+      font-size: 14px;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    input[type="email"], 
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    input:focus {
+      border-color: gold;
+      outline: none;
+      box-shadow: 0 0 5px rgba(212,175,55,0.5);
+    }
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 10px 0 20px;
+    }
+    .form-options a {
+      text-decoration: none;
+      color: #333;
+    }
+    .form-options a:hover {
+      color: gold;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .login-btn:hover {
+      background: gold;
+      color: black;
+    }
+    .register {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    .register a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .register a:hover {
+      color: gold;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      color: #ccc;
+      margin-top: 40px;
+      font-size: 13px;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    footer a:hover {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Velour Society</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="login-section">
+    <div class="login-box">
+      <h1>Welcome Back</h1>
+      <p>Sign in to continue shopping</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button type="submit" class="login-btn">Sign In</button>
+      </form>
+      <div class="register">
+        Don't have an account? <a href="#">Register</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Velour Society | <a href="#">About</a> | <a href="#">Contact</a></p>
+  </footer>
+
+  <script>
+    // Simple validation
+    document.getElementById("login-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      if(email && password){
+        alert("Login Successful! Welcome to Velour Society.");
+        window.location.href = "index.html";
+      } else {
+        alert("Please fill all fields!");
+      }
+    });
+  </script>
+</body>
+</html>
+
