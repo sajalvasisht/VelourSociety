@@ -1,93 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Velour Society</title>
   <style>
-    /* Reset */
+    /* --- Font Imports --- */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+    :root {
+      --heading-font: 'Playfair Display', serif;
+      --body-font: 'Montserrat', sans-serif;
+      --gold: #d4af37;
+      --dark: #111;
+      --gray: #666;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(to bottom, #000000, #1a1a1a);
-      color: #333;
+      font-family: var(--body-font);
+      background: #fff;
+      color: var(--dark);
+      overflow-x: hidden;
     }
 
-    /* Navbar */
+    /* --- Navbar --- */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: black;
+      background: rgba(0, 0, 0, 0.35);
       padding: 15px 40px;
+      backdrop-filter: blur(6px);
     }
-    nav .logo {
-      font-size: 22px;
+
+    .logo {
+      font-size: 24px;
+      font-family: var(--heading-font);
       font-weight: bold;
       color: white;
+      letter-spacing: 2px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
       gap: 25px;
     }
+
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-size: 16px;
-    }
-    nav ul li a:hover {
-      color: gold;
+      font-size: 15px;
+      font-family: var(--body-font);
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
     }
 
-    /* Cart Container */
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+
+    /* --- Cart Container --- */
     .cart-container {
       max-width: 1100px;
-      margin: 40px auto;
+      margin: 60px auto;
       padding: 20px;
       text-align: center;
     }
+
     .cart-container h1 {
-      font-size: 28px;
-      font-weight: bold;
-      color: white; /* FIX applied */
-      margin-bottom: 10px;
-    }
-    .cart-container p {
-      font-size: 15px;
-      color: #cccccc; /* light gray subtitle */
-      margin-bottom: 30px;
+      font-family: var(--heading-font);
+      font-size: 34px;
+      color: var(--dark);
+      margin-bottom: 8px;
     }
 
-    /* Cart Content */
+    .cart-container p {
+      font-size: 15px;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* --- Cart Content --- */
     .cart-content {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 20px;
-    }
-    .cart-items, .order-summary {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      gap: 25px;
     }
 
-    /* Item */
+    .cart-items,
+    .order-summary {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    /* --- Cart Items --- */
     .cart-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 0;
+      padding: 18px 0;
       border-bottom: 1px solid #eee;
     }
+
     .cart-item:last-child {
       border-bottom: none;
     }
+
     .cart-item img {
       width: 90px;
       height: 90px;
@@ -95,82 +124,140 @@
       object-fit: cover;
       margin-right: 20px;
     }
+
     .item-details {
       flex: 1;
       text-align: left;
     }
+
     .item-details h4 {
-      margin-bottom: 5px;
+      font-family: var(--body-font);
+      font-weight: 500;
+      margin-bottom: 6px;
       font-size: 16px;
     }
+
     .item-details p {
-      color: gray;
       font-size: 14px;
+      color: var(--gray);
     }
+
     .item-price {
-      font-weight: bold;
+      font-weight: 600;
       font-size: 16px;
+      color: var(--dark);
     }
+
+    /* --- Quantity Control --- */
     .quantity-control {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .quantity-control button {
       padding: 4px 10px;
       border: 1px solid #ccc;
       background: white;
       cursor: pointer;
-      border-radius: 5px;
-    }
-    .remove {
-      color: red;
-      cursor: pointer;
-      margin-left: 10px;
+      border-radius: 50%;
+      transition: all 0.3s;
     }
 
-    /* Order Summary */
-    .order-summary h3 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      font-weight: bold;
+    .quantity-control button:hover {
+      border-color: var(--gold);
+      background: #f8f8f8;
     }
+
+    .quantity-control span {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .remove {
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 18px;
+      color: #aaa;
+      transition: color 0.3s;
+    }
+
+    .remove:hover {
+      color: var(--gold);
+    }
+
+    /* --- Order Summary --- */
+    .order-summary h3 {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
     .summary-item {
       display: flex;
       justify-content: space-between;
-      margin: 8px 0;
+      margin: 10px 0;
       font-size: 16px;
     }
+
     .summary-item.total {
       border-top: 1px solid #ddd;
-      padding-top: 10px;
+      padding-top: 12px;
       font-weight: bold;
       font-size: 18px;
     }
+
     .checkout-btn {
-      margin-top: 20px;
-      padding: 12px;
+      margin-top: 25px;
+      padding: 14px;
       width: 100%;
-      background: black;
+      background: var(--dark);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.3s;
     }
+
     .checkout-btn:hover {
-      background: gold;
+      background: var(--gold);
       color: black;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: #fff;
+      color: #555;
+      text-align: center;
+      padding: 4rem 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--dark);
     }
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
   <nav>
     <div class="logo">Velour Society</div>
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="#">Men</a></li>
       <li><a href="#">Women</a></li>
       <li><a href="#">Accessories</a></li>
@@ -185,47 +272,126 @@
     <div class="cart-content">
       <!-- Cart Items -->
       <div class="cart-items">
-        <div class="cart-item">
-          <img src="https://i.pinimg.com/736x/f7/6b/df/f76bdf47be257f1f05a4d2ce1a893d08.jpg" alt="Coat">
+        <div class="cart-item" data-price="450.00">
+          <img src="product1.jpg" alt="Classic Wool Coat">
           <div class="item-details">
             <h4>Classic Wool Coat</h4>
             <p>Size: M • Color: Navy</p>
           </div>
           <div class="quantity-control">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button class="decrease">-</button>
+            <span class="quantity">1</span>
+            <button class="increase">+</button>
           </div>
           <div class="item-price">$450.00</div>
-          <div class="remove">✖</div>
+          <div class="remove" onclick="removeItem(this)">✖</div>
         </div>
 
-        <div class="cart-item">
-          <img src="https://i.pinimg.com/736x/99/71/ea/9971eae782e69df8b6cfbce26b16c334.jpg" alt="Bag">
+        <div class="cart-item" data-price="320.00">
+          <img src="product2.jpg" alt="Velour Leather Bag">
           <div class="item-details">
             <h4>Velour Leather Bag</h4>
-            <p>Size: M • Color: Navy</p>
+            <p>Size: Standard • Color: Black</p>
           </div>
           <div class="quantity-control">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button class="decrease">-</button>
+            <span class="quantity">1</span>
+            <button class="increase">+</button>
           </div>
           <div class="item-price">$320.00</div>
-          <div class="remove">✖</div>
+          <div class="remove" onclick="removeItem(this)">✖</div>
         </div>
       </div>
 
       <!-- Order Summary -->
       <div class="order-summary">
         <h3>Order Summary</h3>
-        <div class="summary-item"><span>Subtotal</span><span>$770.00</span></div>
+        <div class="summary-item"><span>Subtotal</span><span id="subtotal">$770.00</span></div>
         <div class="summary-item"><span>Shipping</span><span>Free</span></div>
-        <div class="summary-item"><span>Tax</span><span>$61.60</span></div>
-        <div class="summary-item total"><span>Total</span><span>$831.60</span></div>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <div class="summary-item"><span>Tax (8%)</span><span id="tax">$61.60</span></div>
+        <div class="summary-item total"><span>Total</span><span id="total">$831.60</span></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2025 Velour Society. All Rights Reserved.</p>
+    <p>
+      <a href="#">About</a> |
+      <a href="#">Contact</a> |
+      <a href="#">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    // Initialize cart functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const increaseButtons = document.querySelectorAll('.increase');
+      const decreaseButtons = document.querySelectorAll('.decrease');
+
+      increaseButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          updateQuantity(this, 1);
+        });
+      });
+
+      decreaseButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          updateQuantity(this, -1);
+        });
+      });
+
+      calculateTotals();
+    });
+
+    function updateQuantity(button, change) {
+      const quantitySpan = button.parentElement.querySelector('.quantity');
+      let quantity = parseInt(quantitySpan.textContent);
+
+      if (change === 1) {
+        quantity++;
+      } else if (change === -1 && quantity > 1) {
+        quantity--;
+      }
+
+      quantitySpan.textContent = quantity;
+
+      const cartItem = button.closest('.cart-item');
+      const price = parseFloat(cartItem.getAttribute('data-price'));
+      const itemPriceElement = cartItem.querySelector('.item-price');
+      itemPriceElement.textContent = '$' + (price * quantity).toFixed(2);
+
+      calculateTotals();
+    }
+
+    function removeItem(removeButton) {
+      const cartItem = removeButton.closest('.cart-item');
+      cartItem.remove();
+      calculateTotals();
+    }
+
+    function calculateTotals() {
+      let subtotal = 0;
+      const cartItems = document.querySelectorAll('.cart-item');
+
+      cartItems.forEach(item => {
+        const price = parseFloat(item.getAttribute('data-price'));
+        const quantity = parseInt(item.querySelector('.quantity').textContent);
+        subtotal += price * quantity;
+      });
+
+      const tax = subtotal * 0.08;
+      const total = subtotal + tax;
+
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+      document.getElementById('total').textContent = '$' + total.toFixed(2);
+    }
+
+    function checkout() {
+      alert('Thank you for your purchase! Your order has been processed.');
+    }
+  </script>
 </body>
 </html>
