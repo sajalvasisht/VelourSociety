@@ -17,16 +17,9 @@
       color: #fff;
       background: linear-gradient(-45deg, #000, #111, #222, #333);
       background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     header {
@@ -250,20 +243,6 @@
     <p>© 2025 Velour Society | <a href="#">About</a> | <a href="#">Contact</a></p>
   </footer>
 
-  <script>
-    // Simple validation
-    document.getElementById("login-form").addEventListener("submit", function(e){
-      e.preventDefault();
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value.trim();
-
-      if(email && password){
-        alert("Login Successful! Welcome to Velour Society.");
-        window.location.href = "index.html";
-      } else {
-        alert("Please fill all fields!");
-      }
-    });
-  </script>
+  
 </body>
 </html>
