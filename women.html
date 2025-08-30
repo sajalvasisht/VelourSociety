@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women's Collection - Velour Society</title>
+  <style>
+    /* --- Font Imports & Resets --- */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* --- 1. General Luxury Enhancements --- */
+    :root {
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --color-gold: #d4af37;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f8f8;
+    }
+
+    body {
+      font-family: var(--font-heading);
+      background: #fff;
+      color: var(--color-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    p,
+    button,
+    input,
+    .menu li a,
+    footer {
+      font-family: var(--font-body);
+    }
+
+    /* --- Navbar --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      color: var(--color-dark);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: var(--color-dark);
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: var(--color-dark);
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .menu li a:hover {
+      color: var(--color-gold);
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icons input {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ccc;
+      background: transparent;
+      color: var(--color-dark);
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+    }
+
+    .icons input::placeholder {
+      color: #888;
+    }
+
+    .icons input:focus {
+      border-color: var(--color-gold);
+    }
+
+    .icons a {
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--color-dark);
+      transition: color 0.3s;
+    }
+
+    .icons a:hover {
+      color: var(--color-gold);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+      color: #fff;
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero button {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--color-gold);
+      border-radius: 30px;
+      background: var(--color-gold);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .hero button:hover {
+      background: transparent;
+      color: var(--color-gold);
+    }
+
+    /* --- Collection Section --- */
+    .collection {
+      padding: 6rem 4rem;
+      background: var(--color-light);
+    }
+
+    .collection-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .collection-header h2 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--color-dark);
+    }
+
+    .collection-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      height: 300px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .product-image .placeholder {
+      font-size: 2.5rem;
+      color: #ccc;
+      font-weight: bold;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--color-dark);
+    }
+
+    .product-info p {
+      font-size: 1.1rem;
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .product-info .description {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .add-to-cart {
+      padding: 0.8rem 1.5rem;
+      background: var(--color-gold);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .add-to-cart:hover {
+      background: var(--color-dark);
+      transform: translateY(-2px);
+    }
+
+    /* --- 3. A More Sophisticated Footer --- */
+    footer {
+      background: var(--color-dark);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+      opacity: 0.8;
+    }
+
+    footer a:hover {
+      color: var(--color-gold);
+      opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .menu {
+        gap: 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .collection {
+        padding: 4rem 2rem;
+      }
+      
+      .product-grid {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Velour Society</div>
+      <ul class="menu">
+        <li><a href="men.html">Men</a></li>
+        <li><a href="women.html" style="color: var(--color-gold);">Women</a></li>
+        <li><a href="accessories.html">Accessories</a></li>
+      </ul>
+      <div class="icons">
+        <input type="text" placeholder="Search...">
+        <a href="cart.html">🛒</a>
+        <a href="login.html">Login/Signup</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Women's Collection</h1>
+    <p>Discover elegant womenswear designed for the modern woman. Sophisticated style meets contemporary fashion.</p>
+    <button>Explore Collection</button>
+  </section>
+
+  <section class="collection">
+    <div class="collection-header">
+      <h2>Featured Women's Clothing</h2>
+      <p>Elevate your wardrobe with our curated selection of premium womenswear</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="Elegant_evening_dress.png" alt="Elegant Evening Dress" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Elegant Evening Dress</h3>
+          <p>$520</p>
+          <div class="description">Stunning evening gown for special occasions</div>
+          <a href="cart.html?product=Elegant+Evening+Dress&price=520" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="cashmere_sweater.png" alt="Cashmere Sweater" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Cashmere Sweater</h3>
+          <p>$280</p>
+          <div class="description">Luxurious cashmere sweater for ultimate comfort</div>
+          <a href="cart.html?product=Cashmere+Sweater&price=280" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="silk_blouse.png" alt="Silk Blouse" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Silk Blouse</h3>
+          <p>$180</p>
+          <div class="description">Elegant silk blouse for professional wear</div>
+          <a href="cart.html?product=Silk+Blouse&price=180" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="Designer_skirt.png" alt="Designer Skirt" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Designer Skirt</h3>
+          <p>$220</p>
+          <div class="description">Chic designer skirt for everyday elegance</div>
+          <a href="cart.html?product=Designer+Skirt&price=220" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+        <img src="Leather_handbag.png" alt="Leather Handbag" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Leather Handbag</h3>
+          <p>$450</p>
+          <div class="description">Premium leather handbag with elegant design</div>
+          <a href="cart.html?product=Leather+Handbag&price=450" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="Linen_jumpsuit.png" alt="Linen Jumpsuit" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-info">
+          <h3>Linen Jumpsuit</h3>
+          <p>$320</p>
+          <div class="description">Comfortable linen jumpsuit for summer days</div>
+          <a href="cart.html?product=Linen+Jumpsuit&price=320" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Velour Society. All Rights Reserved.</p>
+    <p>
+      <a href="#">About</a> |
+      <a href="#">Contact</a> |
+      <a href="#">Privacy Policy</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
