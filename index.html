@@ -127,6 +127,20 @@
         color: #fff;
         overflow: hidden;
     }
+    @media (max-aspect-ratio: 16/9) {
+    /* Styles for tall screens, like a smartphone in portrait mode */
+    .hero-video-bg {
+        height: 100%;
+        width: auto;
+    }
+}
+@media (min-aspect-ratio: 16/9) {
+    /* Styles for wide screens, like a desktop or landscape tablet */
+    .hero-video-bg {
+        width: 100%;
+        height: auto;
+    }
+}
 
     .hero-video-bg {
         position: absolute;
@@ -357,7 +371,7 @@
   <!-- Section 1: Main Hero -->
   <section class="hero" id="main-hero">
     <video autoplay muted loop class="hero-video-bg">
-      <source src="fashion.mp4" type="video/mp4">
+      <source src="videos/fashion.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
     <div class="hero-content">
@@ -370,7 +384,7 @@
   <!-- Section 2: Featured Collection Hero -->
   <section class="hero" id="featured-collection">
     <video autoplay muted loop class="hero-video-bg">
-        <source src="featured_collection.mp4" type="video/mp4">
+        <source src="videos/Featured_collection.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
     <div class="hero-content">
@@ -383,7 +397,7 @@
   <!-- Section 3: Shop by Category Hero -->
   <section class="hero" id="shop-by-category-hero">
     <video autoplay muted loop class="hero-video-bg">
-        <source src="category_video.mp4" type="video/mp4">
+        <source src="videos/category.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
     <div class="hero-content">
@@ -396,7 +410,7 @@
   <!-- NEW: Brand Story Section -->
   <section class="brand-story" id="our-story">
       <div class="story-image">
-          <img src="story_image.jpeg" alt="A fashion designer carefully crafting a garment.">
+          <img src="photos/brand.jpg" alt="A fashion designer carefully crafting a garment.">
       </div>
       <div class="story-content">
           <h2>The Velour Legacy</h2>
