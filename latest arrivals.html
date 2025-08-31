@@ -3,142 +3,158 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Latest Arrivals | Velour Society</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velour Society - Latest Arrivals</title>
     <style>
         body {
-            background: #fff;
-            color: #181818;
-            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
+        /* Header */
         
         .header {
-            background: #111 url('https://c8.alamy.com/comp/P4M6HW/a-luxury-store-with-men-clothing-P4M6HW.jpg') center/cover no-repeat;
-            padding: 70px 0 30px 0;
+            background-color: #111;
+            /* Keep same color */
+            color: white;
+            padding: 30px 0;
             text-align: center;
-            border-bottom: 2px solid #181818;
-            position: relative;
-        }
-        
-        .header::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(17, 17, 17, 0.55);
-            z-index: 1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
         }
         
         .header h1 {
-            color: #181818;
-            background: rgba(255, 255, 255, 0.85);
-            display: inline-block;
-            padding: 10px 40px;
-            border-radius: 30px;
-            letter-spacing: 2px;
-            font-size: 2.7rem;
             margin: 0;
-            font-weight: 700;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            font-size: 2.5rem;
         }
         
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #ddd;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        /* Arrivals Section */
+        
         .arrivals-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 50px 0 60px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 per row */
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
         }
         
         .arrival-card {
             background: #fff;
-            border-radius: 22px;
-            box-shadow: 0 6px 32px rgba(24, 24, 24, 0.10), 0 1.5px 6px rgba(24, 24, 24, 0.07);
-            width: 330px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.22s, box-shadow 0.22s;
-            border: 1.5px solid #18181811;
             position: relative;
+            transition: transform 0.3s ease;
         }
         
         .arrival-card:hover {
-            transform: translateY(-10px) scale(1.035);
-            box-shadow: 0 12px 40px rgba(24, 24, 24, 0.18), 0 2px 8px rgba(24, 24, 24, 0.10);
+            transform: translateY(-8px);
         }
         
         .arrival-card img {
             width: 100%;
-            height: 340px;
+            height: 320px;
             object-fit: cover;
-            border-bottom: 1.5px solid #18181811;
+            border-bottom: 1px solid #ddd;
         }
         
         .arrival-info {
-            padding: 24px 22px 20px 22px;
+            padding: 15px;
+            text-align: center;
         }
         
         .arrival-info h2 {
-            color: #181818;
-            font-size: 1.22rem;
-            margin: 0 0 14px 0;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #111;
         }
         
-        .arrival-info .price {
-            color: #181818;
-            font-size: 1.15rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .arrival-info .old-price {
-            color: #888;
+        .old-price {
             text-decoration: line-through;
-            margin-right: 12px;
-            font-size: 1rem;
-            font-weight: normal;
+            color: #888;
+            margin-right: 10px;
         }
+        
+        .price {
+            color: #e63946;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        /* Sale Badge */
         
         .sale-badge {
             position: absolute;
-            top: 22px;
-            left: 22px;
-            background: #181818;
-            color: #fff;
+            top: 10px;
+            left: 10px;
+            background: #e63946;
+            color: white;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 5px;
             font-weight: bold;
-            padding: 7px 18px;
-            border-radius: 22px;
-            font-size: 1rem;
-            z-index: 2;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(24, 24, 24, 0.10);
+        }
+        /* Footer */
+        
+        .footer {
+            background-color: #111;
+            color: #ccc;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
         }
         
-        @media (max-width: 900px) {
-            .arrivals-container {
-                flex-direction: column;
-                align-items: center;
-            }
+        .footer p {
+            margin: 5px 0 15px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            position: absolute;
+            right: -15px;
+            color: #666;
+        }
+        
+        .footer-links a:hover {
+            color: white;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Header -->
     <div class="header">
         <div class="header-content">
             <h1>Latest Arrivals</h1>
+            <p class="tagline">✨ Curated Luxury, Just For You ✨</p>
         </div>
     </div>
+
+    <!-- Arrivals -->
     <div class="arrivals-container">
         <!-- Men Polo T-shirt -->
         <div class="arrival-card">
@@ -150,6 +166,7 @@
                 <span class="price">$35</span>
             </div>
         </div>
+
         <!-- Adil Qadri Perfume -->
         <div class="arrival-card">
             <span class="sale-badge">15% OFF</span>
@@ -160,7 +177,8 @@
                 <span class="price">$51</span>
             </div>
         </div>
-        <!-- Men Sunglasses -->
+
+        <!-- Sunglasses -->
         <div class="arrival-card">
             <span class="sale-badge">30% OFF</span>
             <img src="https://faadu.in/public/products/player-sunglasses-06.webp" alt="Sunglasses">
@@ -170,7 +188,8 @@
                 <span class="price">$49</span>
             </div>
         </div>
-        <!-- Women Gown -->
+
+        <!-- Women's Velvet Gown -->
         <div class="arrival-card">
             <span class="sale-badge">25% OFF</span>
             <img src="https://i.pinimg.com/1200x/18/1a/e9/181ae99078351b36124a74bc99438188.jpg" alt="Woman Wearing Gown">
@@ -180,7 +199,8 @@
                 <span class="price">$165</span>
             </div>
         </div>
-        <!-- Women Watch -->
+
+        <!-- Women's Watch -->
         <div class="arrival-card">
             <span class="sale-badge">18% OFF</span>
             <img src="https://static.helioswatchstore.com/media/blog/428%20x%20390%20fossil.png" alt="Women's Watch">
@@ -190,17 +210,29 @@
                 <span class="price">$90</span>
             </div>
         </div>
-        <!-- Women Purse -->
+
+        <!-- Women's Purse -->
         <div class="arrival-card">
             <span class="sale-badge">20% OFF</span>
-            <img src="https://sarmanluxury.in/cdn/shop/files/rn-image_picker_lib_temp_3140a2e3-24c8-4fe6-8690-d7208c8b2db1.jpg?v=1712840520">
+            <img src="https://sarmanluxury.in/cdn/shop/files/rn-image_picker_lib_temp_3140a2e3-24c8-4fe6-8690-d7208c8b2db1.jpg?v=1712840520" alt="Women's Purse">
             <div class="arrival-info">
-                <h2> Women's Purse</h2>
+                <h2>Women's Purse</h2>
                 <span class="old-price">$350</span>
                 <span class="price">$245</span>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Velour Society. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+
 </body>
 
 </html>
