@@ -5,6 +5,7 @@
 /* --- Google Fonts and Basic Setup --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
 
 /* A little reset to make all browsers behave the same */
 * {
@@ -97,9 +98,17 @@ header.scrolled {
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+  /* Using your body font for a modern twist */
+  font-size: 1.6rem;
+  font-weight: 300;
+  /* Light and airy font weight */
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  /* Very wide spacing is key for this look */
+  color: #fff;
+  padding-left: 6px;
+  /* Balances the extra letter-spacing on the left */
 }
 
 /* This is the main menu for desktops */
@@ -350,132 +359,132 @@ header.scrolled {
 
 /* --- UPDATED: The Big Footer Section --- */
 .enhanced-footer {
-    background: #111;
-    color: #aaa;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 4rem 3rem 4rem;
+  background: #111;
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem 3rem 4rem;
 }
 
 .footer-content-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #444;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #444;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .footer-logo {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #fff;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #fff;
 }
 
 .footer-socials {
-    display: flex;
-    gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .footer-socials a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
 .footer-socials a:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-bottom: 3rem;
 }
 
 .footer-column h4 {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .footer-column ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .footer-column ul li {
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .footer-column ul li a {
-    font-family: var(--font-body);
-    color: #aaa;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
 }
 
 .footer-column ul li a:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .newsletter-form p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .newsletter-input {
-    display: flex;
+  display: flex;
 }
 
 .newsletter-input input {
-    flex-grow: 1;
-    border: 1px solid #555;
-    padding: 0.8rem;
-    outline: none;
-    background: #222;
-    color: #fff;
-    font-family: var(--font-body);
+  flex-grow: 1;
+  border: 1px solid #555;
+  padding: 0.8rem;
+  outline: none;
+  background: #222;
+  color: #fff;
+  font-family: var(--font-body);
 }
 
 .newsletter-input button {
-    border: none;
-    background: #fff;
-    color: #111;
-    padding: 0 1.5rem;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-    font-weight: 500;
+  border: none;
+  background: #fff;
+  color: #111;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
 }
 
 .newsletter-input button:hover {
-    background: var(--color-gold);
-    color: #fff;
+  background: var(--color-gold);
+  color: #fff;
 }
 
 .footer-bottom {
-    text-align: center;
-    padding-top: 3rem;
-    font-size: 0.85rem;
-    width: 100%;
-    border-top: 1px solid #444;
+  text-align: center;
+  padding-top: 3rem;
+  font-size: 0.85rem;
+  width: 100%;
+  border-top: 1px solid #444;
 }
 
 
@@ -714,8 +723,7 @@ body.panel-open .scroll-container {
   }
 
   .footer-top {
-      flex-direction: column;
-      gap: 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
-
