@@ -5,15 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Velour Society</title>
+  
   <style>
     /* --- Font Imports --- */
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
 
     :root {
-      --heading-font: 'Playfair Display', serif;
-      --body-font: 'Montserrat', sans-serif;
-      --gold: #d4af37;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --color-gold: #d4af37;
       --dark: #111;
       --gray: #666;
     }
@@ -25,305 +27,384 @@
     }
 
     body {
-      font-family: var(--body-font);
-      background: #fff;
+      font-family: var(--font-body);
+      background: #f9f9f9; /* A slightly softer background */
       color: var(--dark);
       overflow-x: hidden;
     }
 
-    /* --- Navbar --- */
-    nav {
+    /* --- Consistent Navbar (Matches Home Page Scrolled State) --- */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(10, 10, 10, 0.9); /* Premium dark, semi-transparent */
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.35);
-      padding: 15px 40px;
-      backdrop-filter: blur(6px);
+      padding: 1rem 3rem;
+      color: #fff;
+    }
+
+    .logo-link {
+      text-decoration: none;
+      color: #fff;
     }
 
     .logo {
-      font-size: 24px;
-      font-family: var(--heading-font);
-      font-weight: bold;
-      color: white;
-      letter-spacing: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: #fff;
+      padding-left: 6px;
     }
 
-    nav ul {
+    .main-menu {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 2.5rem;
     }
 
-    nav ul li a {
-      color: white;
+    .main-menu li a {
       text-decoration: none;
-      font-size: 15px;
-      font-family: var(--body-font);
-      letter-spacing: 0.5px;
+      color: #fff;
+      font-size: 1rem;
       transition: color 0.3s;
     }
-
-    nav ul li a:hover {
+    .main-menu li a:hover {
       color: var(--gold);
     }
+    
+    .icons {
+      display: flex;
+      align-items: center;
+    }
+    .icons input {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      border-radius: 20px;
+    }
+    .icons a {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: #fff;
+    }
 
-    /* --- Cart Container --- */
+    /* Mobile Menu Placeholders */
+    .hamburger, .mobile-nav { display: none; } 
+
+    /* --- REDESIGNED Cart Page --- */
     .cart-container {
-      max-width: 1100px;
-      margin: 60px auto;
+      max-width: 1200px;
+      margin: 50px auto;
       padding: 20px;
-      text-align: center;
     }
 
     .cart-container h1 {
-      font-family: var(--heading-font);
-      font-size: 34px;
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
       color: var(--dark);
-      margin-bottom: 8px;
-    }
-
-    .cart-container p {
-      font-size: 15px;
-      color: var(--gray);
       margin-bottom: 40px;
+      text-align: center;
+      font-weight: 700;
     }
 
-    /* --- Cart Content --- */
     .cart-content {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 25px;
+      gap: 30px;
+      align-items: start;
     }
 
     .cart-items,
     .order-summary {
       background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      border: 1px solid #eaeaea;
     }
+    
+    .cart-items-header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        color: var(--gray);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
+    .cart-items-header .product-title { flex-grow: 1; }
+    .cart-items-header .quantity-title, .cart-items-header .total-title { text-align: right; width: 120px; }
 
-    /* --- Cart Items --- */
+
+    /* Cart Items */
     .cart-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
+      padding: 20px 0;
       border-bottom: 1px solid #eee;
     }
-
-    .cart-item:last-child {
-      border-bottom: none;
-    }
+    .cart-item:last-child { border-bottom: none; }
 
     .cart-item img {
-      width: 90px;
-      height: 90px;
-      border-radius: 10px;
+      width: 100px;
+      height: 120px;
       object-fit: cover;
       margin-right: 20px;
     }
 
-    .item-details {
-      flex: 1;
-      text-align: left;
-    }
-
+    .item-details { flex: 1; text-align: left; }
     .item-details h4 {
-      font-family: var(--body-font);
-      font-weight: 500;
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.2rem;
       margin-bottom: 6px;
-      font-size: 16px;
     }
-
     .item-details p {
-      font-size: 14px;
+      font-size: 0.9rem;
       color: var(--gray);
     }
-
-    .item-price {
-      font-weight: 600;
-      font-size: 16px;
+    
+    .item-total-price {
+      font-weight: 500;
+      font-size: 1rem;
       color: var(--dark);
+      width: 120px;
+      text-align: right;
     }
 
-    /* --- Quantity Control --- */
+    /* Quantity Control */
     .quantity-control {
       display: flex;
       align-items: center;
-      gap: 10px;
+      width: 120px;
+      justify-content: flex-end;
     }
-
     .quantity-control button {
-      padding: 4px 10px;
+      width: 28px;
+      height: 28px;
       border: 1px solid #ccc;
       background: white;
       cursor: pointer;
-      border-radius: 50%;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
-
     .quantity-control button:hover {
-      border-color: var(--gold);
-      background: #f8f8f8;
+      background: #f1f1f1;
     }
-
     .quantity-control span {
-      min-width: 20px;
+      width: 40px;
       text-align: center;
       font-weight: 500;
+      font-size: 1rem;
     }
 
     .remove {
       cursor: pointer;
-      margin-left: 10px;
-      font-size: 18px;
-      color: #aaa;
+      font-size: 0.8rem;
+      color: var(--gray);
       transition: color 0.3s;
+      margin-top: 8px;
+      display: inline-block;
+      text-decoration: underline;
     }
+    .remove:hover { color: #e74c3c; }
 
-    .remove:hover {
-      color: var(--gold);
-    }
-
-    /* --- Order Summary --- */
+    /* Order Summary */
     .order-summary h3 {
-      font-family: var(--heading-font);
-      font-size: 22px;
-      margin-bottom: 20px;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 25px;
       color: var(--dark);
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
     }
-
     .summary-item {
       display: flex;
       justify-content: space-between;
-      margin: 10px 0;
-      font-size: 16px;
+      margin: 15px 0;
+      font-size: 1rem;
     }
-
     .summary-item.total {
       border-top: 1px solid #ddd;
-      padding-top: 12px;
+      padding-top: 20px;
+      margin-top: 20px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 1.2rem;
+      font-family: var(--font-heading);
     }
-
     .checkout-btn {
       margin-top: 25px;
-      padding: 14px;
+      padding: 16px;
       width: 100%;
       background: var(--dark);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       cursor: pointer;
       letter-spacing: 1px;
+      text-transform: uppercase;
       transition: all 0.3s;
     }
-
     .checkout-btn:hover {
       background: var(--gold);
-      color: black;
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #fff;
-      color: #555;
-      text-align: center;
-      padding: 4rem 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #e5e5e5;
-    }
-
-    footer a {
-      color: #555;
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: color 0.3s;
-    }
-
-    footer a:hover {
       color: var(--dark);
     }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .navbar { padding: 1rem 1.5rem; }
+        .main-menu { display: none; }
+        .cart-content { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">Velour Society</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Men</a></li>
-      <li><a href="#">Women</a></li>
-      <li><a href="#">Accessories</a></li>
-    </ul>
-  </nav>
-
-  <!-- Cart Container -->
+  <!-- NEW: Consistent Header from Home Page -->
+  <header id="main-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo-link">
+        <div class="logo">Velour Society</div>
+      </a>
+      <ul class="main-menu">
+        <li><a href="categories.html">Shop</a></li>
+        <li><a href="index.html#our-story">Our Story</a></li>
+        <li><a href="index.html#page-footer">Contact</a></li>
+      </ul>
+      <div class="icons">
+        <input type="text" placeholder="Search...">
+        <a href="cart.html" aria-label="View Shopping Cart">🛒</a>
+        <a href="#" id="login-trigger" aria-label="Login or Signup">Login/Signup</a>
+      </div>
+    </nav>
+  </header>
+  
   <div class="cart-container">
     <h1>Shopping Cart</h1>
-    <p>Review your selected items before checkout</p>
 
     <div class="cart-content">
-      <!-- Cart Items -->
+      <!-- Left side: Cart Items -->
       <div class="cart-items">
+          <div class="cart-items-header">
+              <span class="product-title">Product</span>
+              <span class="quantity-title">Quantity</span>
+              <span class="total-title">Total</span>
+          </div>
+          
+        <!-- Item 1 -->
         <div class="cart-item" data-price="450.00">
-          <img src="product1.jpg" alt="Classic Wool Coat">
+          <img src="photos/product1.jpg" alt="Classic Wool Coat">
           <div class="item-details">
             <h4>Classic Wool Coat</h4>
             <p>Size: M • Color: Navy</p>
+            <span class="remove" onclick="removeItem(this)">Remove</span>
           </div>
           <div class="quantity-control">
             <button class="decrease">-</button>
             <span class="quantity">1</span>
             <button class="increase">+</button>
           </div>
-          <div class="item-price">$450.00</div>
-          <div class="remove" onclick="removeItem(this)">✖</div>
+          <div class="item-total-price">$450.00</div>
         </div>
 
+        <!-- Item 2 -->
         <div class="cart-item" data-price="320.00">
-          <img src="product2.jpg" alt="Velour Leather Bag">
+          <img src="photos/product2.jpg" alt="Velour Leather Bag">
           <div class="item-details">
             <h4>Velour Leather Bag</h4>
             <p>Size: Standard • Color: Black</p>
+            <span class="remove" onclick="removeItem(this)">Remove</span>
           </div>
           <div class="quantity-control">
             <button class="decrease">-</button>
             <span class="quantity">1</span>
             <button class="increase">+</button>
           </div>
-          <div class="item-price">$320.00</div>
-          <div class="remove" onclick="removeItem(this)">✖</div>
+          <div class="item-total-price">$320.00</div>
         </div>
       </div>
 
-      <!-- Order Summary -->
+      <!-- Right side: Order Summary -->
       <div class="order-summary">
         <h3>Order Summary</h3>
         <div class="summary-item"><span>Subtotal</span><span id="subtotal">$770.00</span></div>
         <div class="summary-item"><span>Shipping</span><span>Free</span></div>
-        <div class="summary-item"><span>Tax (8%)</span><span id="tax">$61.60</span></div>
+        <div class="summary-item"><span>Tax (est.)</span><span id="tax">$61.60</span></div>
         <div class="summary-item total"><span>Total</span><span id="total">$831.60</span></div>
         <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 Velour Society. All Rights Reserved.</p>
-    <p>
-      <a href="#">About</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Privacy Policy</a>
-    </p>
-  </footer>
+  <!-- You would add the consistent footer from index.html here -->
 
-  
+  <script>
+    // --- Cart Page Functionality ---
+    
+    function setupQuantityControls() {
+        document.querySelectorAll('.cart-item').forEach(item => {
+            const decreaseBtn = item.querySelector('.decrease');
+            const increaseBtn = item.querySelector('.increase');
+            
+            decreaseBtn.addEventListener('click', () => updateQuantity(item, -1));
+            increaseBtn.addEventListener('click', () => updateQuantity(item, 1));
+        });
+    }
+
+    function updateQuantity(item, change) {
+        const quantitySpan = item.querySelector('.quantity');
+        let quantity = parseInt(quantitySpan.textContent) + change;
+        if (quantity < 1) quantity = 1; // Prevent quantity from going below 1
+        quantitySpan.textContent = quantity;
+        updateCartTotals();
+    }
+
+    function removeItem(element) {
+        element.closest('.cart-item').remove();
+        updateCartTotals();
+    }
+
+    function updateCartTotals() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        let subtotal = 0;
+
+        cartItems.forEach(item => {
+            const price = parseFloat(item.dataset.price);
+            const quantity = parseInt(item.querySelector('.quantity').textContent);
+            const itemTotal = price * quantity;
+            subtotal += itemTotal;
+            item.querySelector('.item-total-price').textContent = `$${itemTotal.toFixed(2)}`;
+        });
+
+        const tax = subtotal * 0.08;
+        const total = subtotal + tax;
+
+        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+    }
+    
+    function checkout() {
+        alert('Proceeding to checkout!');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setupQuantityControls();
+    });
+
+  </script>
 </body>
 </html>
+
