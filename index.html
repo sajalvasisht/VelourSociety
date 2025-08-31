@@ -16,41 +16,55 @@
       box-sizing: border-box;
     }
 
-    /* --- General Luxury Enhancements --- */
     :root {
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
       --color-gold: #d4af37;
     }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 5rem;
+    
+    /* --- Scroll Snap Setup --- */
+    html, body {
+        height: 100%;
+        overflow: hidden;
     }
 
     body {
       font-family: var(--font-heading);
       background: #fff;
       color: #111;
-      overflow-x: hidden;
+    }
+    
+    .scroll-container {
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
     }
 
-    p,
-    button,
-    input,
-    .menu li a,
-    footer {
+    .snap-section {
+        scroll-snap-align: start;
+        height: 100vh;
+        position: relative;
+    }
+
+    p, button, input, .main-menu li a, footer {
       font-family: var(--font-body);
     }
 
-    /* --- Navbar --- */
+    /* --- ENHANCED: Navbar --- */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(6px);
+      background: transparent;
+      backdrop-filter: blur(0px);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    
+    header.scrolled {
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(10px);
     }
 
     .navbar {
@@ -60,35 +74,22 @@
       padding: 1rem 3rem;
       color: #fff;
     }
+    
+    .logo-link { text-decoration: none; color: #fff; }
+    .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .menu {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    .menu li a {
+    .main-menu { list-style: none; display: flex; gap: 2.5rem; }
+    .main-menu li a {
       text-decoration: none;
       color: #fff;
       font-size: 1rem;
       transition: color 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
+    .main-menu li a:hover { color: var(--color-gold); }
 
-    .menu li a:hover {
-      color: var(--color-gold);
-    }
-
-    .icons {
-      display: flex;
-      align-items: center;
-    }
-
+    .icons { display: flex; align-items: center; }
     .icons input {
       padding: 0.4rem 0.8rem;
       border: 1px solid #fff;
@@ -99,178 +100,129 @@
       font-size: 0.9rem;
       transition: background 0.3s;
     }
-
-    .icons input::placeholder {
-      color: #eee;
-    }
-
-    .icons input:focus {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .icons a {
-      margin-left: 1rem;
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: #fff;
-    }
+    .icons input::placeholder { color: #eee; }
+    .icons input:focus { background: rgba(255, 255, 255, 0.1); }
+    .icons a { margin-left: 1rem; font-size: 1.2rem; text-decoration: none; color: #fff; }
     
+    .hamburger { display: none; cursor: pointer; padding: 10px; }
+    .hamburger .bar { display: block; width: 25px; height: 2px; margin: 5px auto; background-color: #fff; transition: all 0.3s ease-in-out; }
+    
+    .mobile-nav {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.95); z-index: 100;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0s 0.4s linear;
+    }
+    .mobile-nav.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+    .mobile-nav a {
+        color: #fff; text-decoration: none; font-size: 2rem; margin: 1.5rem 0;
+        font-family: var(--font-heading); opacity: 0; transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .mobile-nav.is-open a { opacity: 1; transform: translateY(0); }
+    .mobile-nav.is-open a:nth-child(1) { transition-delay: 0.2s; }
+    .mobile-nav.is-open a:nth-child(2) { transition-delay: 0.3s; }
+    .mobile-nav.is-open a:nth-child(3) { transition-delay: 0.4s; }
+
     /* --- Fullscreen Hero Sections --- */
     .hero {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        color: #fff;
-        overflow: hidden;
-    }
-    @media (max-aspect-ratio: 16/9) {
-    /* Styles for tall screens, like a smartphone in portrait mode */
-    .hero-video-bg {
-        height: 100%;
-        width: auto;
-    }
-}
-@media (min-aspect-ratio: 16/9) {
-    /* Styles for wide screens, like a desktop or landscape tablet */
-    .hero-video-bg {
-        width: 100%;
-        height: auto;
-    }
-}
-
-    .hero-video-bg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translate(-50%, -50%);
-        z-index: -2;
+        display: flex; align-items: center; justify-content: center;
+        flex-direction: column; text-align: center; color: #fff; overflow: hidden;
     }
     
-    .video-overlay {
-        position: absolute;
-        top:0;
-        left:0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        z-index: -1;
+    /* --- NEW: Video Animation --- */
+    @keyframes kenburns-effect {
+      0% { transform: scale(1.05) translate(-50%, -50%); }
+      100% { transform: scale(1.15) translate(-50%, -50%); }
     }
 
-    .hero-content {
-        z-index: 1;
-        padding: 2rem;
+    .hero-video-bg {
+        position: absolute; top: 50%; left: 50%;
+        min-width: 100%; min-height: 100%;
+        width: auto; height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        animation: kenburns-effect 40s infinite alternate ease-in-out;
     }
 
-    .hero-content h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
+    .video-overlay { position: absolute; top:0; left:0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: -1; }
+    .hero-content { z-index: 1; padding: 2rem; }
 
-    .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    .hero-content h1, .hero-content p, .hero-content .cta-button,
+    .story-content h2, .story-content p {
+        opacity: 0; transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
+    .is-visible .hero-content h1, .is-visible .hero-content p, .is-visible .hero-content .cta-button,
+    .is-visible .story-content h2, .is-visible .story-content p { opacity: 1; transform: translateY(0); }
+    .is-visible .hero-content p { transition-delay: 0.2s; }
+    .is-visible .hero-content .cta-button { transition-delay: 0.4s; }
+    .is-visible .story-content p { transition-delay: 0.2s; }
 
+    .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); }
     .hero-content .cta-button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-        border: 1px solid #fff;
-        border-radius: 30px;
-        background: #fff;
-        color: #111;
-        cursor: pointer;
-        transition: 0.3s ease;
-        text-decoration: none;
+        padding: 0.8rem 2rem; font-size: 1rem; border: 1px solid #fff; border-radius: 30px;
+        background: #fff; color: #111; cursor: pointer;
+        transition: 0.3s ease; text-decoration: none;
+    }
+    .hero-content .cta-button:hover { background: var(--color-gold); border-color: var(--color-gold); color: #fff; }
+    
+    .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5; animation: bounce 2s infinite; }
+    .scroll-down a {
+        display: block; padding-top: 60px; color: #fff; text-decoration: none;
+        font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .scroll-down a::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 50px; background: #fff; }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-20px); }
+        60% { transform: translateX(-50%) translateY(-10px); }
     }
 
-    .hero-content .cta-button:hover {
-        background: var(--color-gold);
-        border-color: var(--color-gold);
-        color: #fff;
+    /* --- Brand Story Section with Parallax --- */
+    .brand-story { display: flex; align-items: center; justify-content: flex-end; padding: 0 4rem; }
+    .story-parallax-bg {
+        background-image: url('photos/brand.jpg'); background-attachment: fixed; background-position: center;
+        background-repeat: no-repeat; background-size: cover;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; filter: brightness(0.9);
     }
-
-    /* --- NEW: Brand Story Section --- */
-    .brand-story {
-        padding: 8rem 4rem;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-    }
-
-    .story-image {
-        flex: 1;
-    }
-
-    .story-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
     .story-content {
-        flex: 1;
-        max-width: 600px;
+        flex-basis: 50%; max-width: 600px; background: rgba(255,255,255, 0.9);
+        padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+    .story-content h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+    .story-content p { font-family: var(--font-body); font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
 
-    .story-content h2 {
-        font-size: 2.8rem;
-        margin-bottom: 1.5rem;
+    /* --- Enhanced Footer --- */
+    .enhanced-footer {
+        background: #f4f4f4; color: #555;
+        display: flex; flex-direction: column; justify-content: center;
+        padding: 5rem 4rem 3rem 4rem;
     }
-
-    .story-content p {
-        font-family: var(--font-body);
-        font-size: 1rem;
-        line-height: 1.8;
-        color: #444;
-        margin-bottom: 1rem;
+    .footer-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem; padding-bottom: 4rem; border-bottom: 1px solid #ddd;
+        width: 100%; max-width: 1200px; margin: 0 auto;
     }
-
-    /* --- Footer --- */
-    footer {
-      background: #f9f9f9;
-      color: #555;
-      text-align: center;
-      padding: 4rem 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #e5e5e5;
-    }
-
-    footer p {
-      margin-bottom: 1rem;
-    }
-
-    footer a {
-      color: #555;
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: color 0.3s;
-    }
-
-    footer a:hover {
-      color: #111;
-    }
-
-    /* --- Login/Signup Panel (Unchanged) --- */
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.5rem; color: #111; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 0.8rem; }
+    .footer-column ul li a { font-family: var(--font-body); color: #555; text-decoration: none; transition: color 0.3s ease; }
+    .footer-column ul li a:hover { color: #111; }
+    .newsletter-form p { font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6; }
+    .newsletter-input { display: flex; border: 1px solid #ccc; }
+    .newsletter-input input { flex-grow: 1; border: none; padding: 0.8rem; outline: none; background: #fff; }
+    .newsletter-input button { border: none; background: #111; color: #fff; padding: 0 1.5rem; cursor: pointer; transition: background 0.3s ease; }
+    .newsletter-input button:hover { background: var(--color-gold); }
+    .footer-bottom { text-align: center; padding-top: 3rem; font-size: 0.9rem; width: 100%; }
+    
+    /* --- RESTORED: Login/Signup Panel --- */
     .page-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; visibility: hidden;
       transition: opacity 0.5s ease, visibility 0s 0.5s linear;
     }
     .page-overlay.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
@@ -281,7 +233,7 @@
       overflow-y: auto; display: flex; flex-direction: column;
     }
     .login-signup-panel.is-open { transform: translateX(0); }
-    body.panel-open { overflow: hidden; }
+    body.panel-open .scroll-container { overflow: hidden; }
     .close-btn {
       position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; font-weight: 300;
       color: #888; background: none; border: none; cursor: pointer; line-height: 1;
@@ -341,95 +293,157 @@
     .social-btn:hover { background: #f9f9f9; border-color: #aaa; }
     
     /* Responsive adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         .navbar { padding: 1rem 1.5rem; }
-        .menu { display: none; } /* Simplified for example, could be a hamburger menu */
-        .brand-story { flex-direction: column; padding: 4rem 2rem; }
+        .main-menu { display: none; }
+        .hamburger { display: block; }
+        .brand-story { justify-content: center; padding: 0 2rem;}
+        .story-content { flex-basis: 90%; }
+        .enhanced-footer { padding: 4rem 2rem; }
     }
-
+    @media (max-width: 768px) {
+        .hero-content h1 {font-size: 2.5rem;}
+        .story-content { padding: 2rem; }
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
+  <header id="main-header">
     <nav class="navbar">
-      <div class="logo">Velour Society</div>
-      <ul class="menu">
-        <li><a href="men.html">Men</a></li>
-        <li><a href="women.html">Women</a></li>
-        <li><a href="accessories.html">Accessories</a></li>
+      <a href="index.html" class="logo-link">
+        <div class="logo">Velour Society</div>
+      </a>
+      <ul class="main-menu">
+        <li><a href="categories.html">Shop</a></li>
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#page-footer">Contact</a></li>
       </ul>
       <div class="icons">
         <input type="text" placeholder="Search...">
-        <a href="cart.html">🛒</a>
-        <a href="#" id="login-trigger">Login/Signup</a>
+        <a href="cart.html" aria-label="View Shopping Cart">🛒</a>
+        <a href="#" id="login-trigger" aria-label="Login or Signup">Login/Signup</a>
+        <div class="hamburger" id="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
       </div>
     </nav>
   </header>
-
-  <!-- Section 1: Main Hero -->
-  <section class="hero" id="main-hero">
-    <video autoplay muted loop class="hero-video-bg">
-      <source src="videos/fashion.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-    <div class="hero-content">
-        <h1>The Fall 2025 Collection</h1>
-        <p>Experience timeless luxury with Velour Society</p>
-        <a href="#featured-collection" class="cta-button">Explore Now</a>
-    </div>
-  </section>
-
-  <!-- Section 2: Featured Collection Hero -->
-  <section class="hero" id="featured-collection">
-    <video autoplay muted loop class="hero-video-bg">
-        <source src="videos/Featured_collection.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-    <div class="hero-content">
-        <h1>Featured Collection</h1>
-        <p>Curated pieces that define modern elegance.</p>
-        <a href="collection.html" class="cta-button">View All</a>
-    </div>
-  </section>
   
-  <!-- Section 3: Shop by Category Hero -->
-  <section class="hero" id="shop-by-category-hero">
-    <video autoplay muted loop class="hero-video-bg">
-        <source src="videos/category.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-    <div class="hero-content">
-        <h1>Shop By Category</h1>
-        <p>Find your signature style with our dedicated collections.</p>
-        <a href="categories.html" class="cta-button">Discover</a>
-    </div>
-  </section>
-  
-  <!-- NEW: Brand Story Section -->
-  <section class="brand-story" id="our-story">
-      <div class="story-image">
-          <img src="photos/brand.jpg" alt="A fashion designer carefully crafting a garment.">
-      </div>
-      <div class="story-content">
-          <h2>The Velour Legacy</h2>
-          <p>Founded on the principles of enduring style and meticulous craftsmanship, Velour Society is more than a brand; it's a narrative of modern luxury. We believe in creating pieces that are both timeless and contemporary, designed to be cherished for years to come.</p>
-          <p>Each garment is born from the finest materials, sourced responsibly and transformed by artisans who share our passion for quality. Our philosophy is simple: to create beautiful, meaningful apparel that empowers the individual.</p>
-      </div>
-  </section>
+  <nav class="mobile-nav" id="mobile-nav-panel">
+      <a href="categories.html">Shop</a>
+      <a href="#our-story">Our Story</a>
+      <a href="#page-footer">Contact</a>
+  </nav>
 
+  <main class="scroll-container">
+      <!-- Section 1: Main Hero -->
+      <section class="hero snap-section animate-on-scroll" id="main-hero">
+        <video autoplay muted loop playsinline class="hero-video-bg">
+          <source src="videos/fashion.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h1>The Fall 2025 Collection</h1>
+            <p>Experience timeless luxury with Velour Society</p>
+            <a href="#featured-collection" class="cta-button">Explore Now</a>
+        </div>
+        <div class="scroll-down">
+            <a href="#featured-collection">Scroll</a>
+        </div>
+      </section>
 
-  <footer>
-    <p>© 2025 Velour Society. All Rights Reserved.</p>
-    <p>
-      <a href="#">About</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Privacy Policy</a>
-    </p>
-  </footer>
+      <!-- Section 2: Featured Collection Hero -->
+      <section class="hero snap-section animate-on-scroll" id="featured-collection">
+        <video autoplay muted loop playsinline class="hero-video-bg">
+            <source src="videos/Featured_collection.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h1>Featured Collection</h1>
+            <p>Curated pieces that define modern elegance.</p>
+            <a href="collection.html" class="cta-button">View All</a>
+        </div>
+        <div class="scroll-down">
+            <a href="#shop-by-category-hero">Scroll</a>
+        </div>
+      </section>
+      
+      <!-- Section 3: Shop by Category Hero -->
+      <section class="hero snap-section animate-on-scroll" id="shop-by-category-hero">
+        <video autoplay muted loop playsinline class="hero-video-bg">
+            <source src="videos/category.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h1>Shop By Category</h1>
+            <p>Find your signature style with our dedicated collections.</p>
+            <a href="categories.html" class="cta-button">Discover</a>
+        </div>
+         <div class="scroll-down">
+            <a href="#our-story">Scroll</a>
+        </div>
+      </section>
+      
+      <!-- Section 4: Brand Story -->
+      <section class="brand-story snap-section animate-on-scroll" id="our-story">
+          <div class="story-parallax-bg"></div>
+          <div class="story-content">
+              <h2>The Velour Legacy</h2>
+              <p>Founded on the principles of enduring style and meticulous craftsmanship, Velour Society is more than a brand; it's a narrative of modern luxury. We believe in creating pieces that are both timeless and contemporary, designed to be cherished for years to come.</p>
+              <p>Each garment is born from the finest materials, sourced responsibly and transformed by artisans who share our passion for quality. Our philosophy is simple: to create beautiful, meaningful apparel that empowers the individual.</p>
+          </div>
+      </section>
 
-  <!-- Page Overlay & Login/Signup Panel -->
+      <!-- Section 5: Footer -->
+      <footer class="enhanced-footer snap-section" id="page-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="categories.html">Men</a></li>
+                    <li><a href="categories.html">Women</a></li>
+                    <li><a href="categories.html">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Our Company</h4>
+                <ul>
+                    <li><a href="#our-story">About Us</a></li>
+                    <li><a href="#">Journal</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#page-footer">Contact</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Stay Connected</h4>
+                <div class="newsletter-form">
+                    <p>Join our mailing list for exclusive updates and offers.</p>
+                    <div class="newsletter-input">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Velour Society. All Rights Reserved.</p>
+        </div>
+      </footer>
+  </main>
+
+  <!-- Login/Signup Panel -->
   <div class="page-overlay" id="page-overlay"></div>
   <div class="login-signup-panel" id="login-signup-panel">
     <button class="close-btn" id="close-panel-btn">&times;</button>
@@ -438,6 +452,8 @@
         <button id="show-login-btn" class="toggle-btn active">Login</button>
         <button id="show-signup-btn" class="toggle-btn">Sign Up</button>
       </div>
+
+      <!-- Login Form -->
       <div class="form-container" id="login-form">
         <h2>Welcome Back</h2>
         <p>Enter your details to sign in to your account.</p>
@@ -459,6 +475,8 @@
           <button class="social-btn">Continue with Apple</button>
         </div>
       </div>
+
+      <!-- Signup Form -->
       <div class="form-container" id="signup-form" style="display: none;">
         <h2>Create Account</h2>
         <p>Join the Velour Society for an exclusive experience.</p>
@@ -484,6 +502,19 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // --- Scrolling Header Logic ---
+      const header = document.getElementById('main-header');
+      const scrollContainer = document.querySelector('.scroll-container');
+      
+      scrollContainer.addEventListener('scroll', () => {
+          if (scrollContainer.scrollTop > 50) {
+              header.classList.add('scrolled');
+          } else {
+              header.classList.remove('scrolled');
+          }
+      }, { passive: true });
+      
+      // --- Login/Signup Panel Logic ---
       const loginTrigger = document.getElementById('login-trigger');
       const panel = document.getElementById('login-signup-panel');
       const closeBtn = document.getElementById('close-panel-btn');
@@ -503,14 +534,12 @@
         overlay.classList.remove('is-open');
         document.body.classList.remove('panel-open');
       };
-
       loginTrigger.addEventListener('click', (e) => { e.preventDefault(); openPanel(); });
       closeBtn.addEventListener('click', closePanel);
       overlay.addEventListener('click', closePanel);
-      document.addEventListener('keydown', (e) => {
+       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && panel.classList.contains('is-open')) closePanel();
       });
-
       showLoginBtn.addEventListener('click', () => {
         showLoginBtn.classList.add('active');
         showSignupBtn.classList.remove('active');
@@ -523,6 +552,30 @@
         signupForm.style.display = 'block';
         loginForm.style.display = 'none';
       });
+      
+      // --- Mobile Menu Logic ---
+      const hamburger = document.getElementById('hamburger-menu');
+      const mobileNav = document.getElementById('mobile-nav-panel');
+
+      hamburger.addEventListener('click', () => {
+          mobileNav.classList.toggle('is-open');
+      });
+      mobileNav.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+              mobileNav.classList.remove('is-open');
+          }
+      });
+      
+      // --- On-Scroll Animation Logic ---
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+              }
+          });
+      }, { threshold: 0.3 });
+      animatedElements.forEach(el => observer.observe(el));
     });
   </script>
 
