@@ -16,7 +16,7 @@
       box-sizing: border-box;
     }
 
-    /* --- 1. General Luxury Enhancements --- */
+    /* --- General Luxury Enhancements --- */
     :root {
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
@@ -25,7 +25,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 5rem; /* Fixes fixed header overlap on scroll */
+      scroll-padding-top: 5rem;
     }
 
     body {
@@ -114,194 +114,116 @@
       text-decoration: none;
       color: #fff;
     }
-
-    /* --- Hero Section --- */
+    
+    /* --- Fullscreen Hero Sections --- */
     .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      z-index: 1;
-      color: #fff;
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    .hero-video-bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+    }
+    
+    .video-overlay {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+        z-index: -1;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    .hero-content {
+        z-index: 1;
+        padding: 2rem;
     }
 
-    .hero button {
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      border: 1px solid #fff;
-      border-radius: 30px;
-      background: #fff;
-      color: #111;
-      cursor: pointer;
-      transition: 0.3s ease;
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
-    .hero button:hover {
-      background: var(--color-gold);
-      border-color: var(--color-gold);
-      color: #fff;
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
     }
 
-    .video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: -1;
+    .hero-content .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        background: #fff;
+        color: #111;
+        cursor: pointer;
+        transition: 0.3s ease;
+        text-decoration: none;
     }
 
-    /* --- Categories Section --- */
-    .categories {
-      padding: 6rem 4rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      background: #fff;
+    .hero-content .cta-button:hover {
+        background: var(--color-gold);
+        border-color: var(--color-gold);
+        color: #fff;
     }
 
-    .category-card {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 1px solid #e5e5e5;
-      border-radius: 0;
-      text-decoration: none;
-      display: block;
-      color: inherit;
+    /* --- NEW: Brand Story Section --- */
+    .brand-story {
+        padding: 8rem 4rem;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
     }
 
-    .category-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+    .story-image {
+        flex: 1;
     }
 
-    .category-card:hover img {
-      transform: scale(1.1);
+    .story-image img {
+        width: 100%;
+        height: auto;
+        display: block;
     }
 
-    .category-card h2 {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: #fff;
-      font-size: 2rem;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    .story-content {
+        flex: 1;
+        max-width: 600px;
     }
 
-    /* --- 2. Revamped Featured Collection --- */
-    .featured-revamped {
-      padding: 6rem 4rem;
-      background: #fff;
-      text-align: center;
+    .story-content h2 {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
     }
 
-    .featured-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 1rem;
+    .story-content p {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 1rem;
     }
 
-    .featured-header h2 {
-      font-size: 2.5rem;
-      margin: 0;
-      text-align: left;
-    }
-
-    .view-all-link {
-      font-family: var(--font-body);
-      text-decoration: none;
-      color: #111;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      position: relative;
-      padding-bottom: 5px;
-    }
-
-    .view-all-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: #111;
-      transition: width 0.4s ease;
-    }
-
-    .view-all-link:hover::after {
-      width: 100%;
-    }
-
-    .product-showcase {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 4rem;
-    }
-
-    .showcase-item {
-      text-align: left;
-    }
-
-    .showcase-image {
-      overflow: hidden;
-      background: #f9f9f9;
-    }
-
-    .showcase-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .showcase-item:hover .showcase-image img {
-      transform: scale(1.05);
-    }
-
-    .showcase-info {
-      padding-top: 1.5rem;
-    }
-
-    .showcase-info h3 {
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-
-    .showcase-info p {
-      font-size: 1rem;
-      color: #444;
-    }
-
-
-    /* --- 3. A More Sophisticated Footer --- */
+    /* --- Footer --- */
     footer {
-      background: #fff;
+      background: #f9f9f9;
       color: #555;
       text-align: center;
       padding: 4rem 2rem;
@@ -322,10 +244,9 @@
 
     footer a:hover {
       color: #111;
-      text-decoration: none;
     }
 
-    /* --- 4. Login/Signup Panel --- */
+    /* --- Login/Signup Panel (Unchanged) --- */
     .page-overlay {
       position: fixed;
       top: 0;
@@ -338,255 +259,84 @@
       visibility: hidden;
       transition: opacity 0.5s ease, visibility 0s 0.5s linear;
     }
-
-    .page-overlay.is-open {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s;
-    }
-
+    .page-overlay.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
     .login-signup-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 90%;
-      /* For mobile */
-      max-width: 600px;
-      /* MODIFIED: Increased from 480px to cover more screen space */
-      background: #fff;
-      z-index: 1000;
-      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-      transform: translateX(100%);
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+      position: fixed; top: 0; right: 0; height: 100vh; width: 90%; max-width: 600px;
+      background: #fff; z-index: 1000; box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow-y: auto; display: flex; flex-direction: column;
     }
-
-    .login-signup-panel.is-open {
-      transform: translateX(0);
-    }
-
-    body.panel-open {
-      overflow: hidden;
-    }
-
+    .login-signup-panel.is-open { transform: translateX(0); }
+    body.panel-open { overflow: hidden; }
     .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: #888;
-      background: none;
-      border: none;
-      cursor: pointer;
-      line-height: 1;
+      position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; font-weight: 300;
+      color: #888; background: none; border: none; cursor: pointer; line-height: 1;
       transition: color 0.3s, transform 0.3s;
     }
-
-    .close-btn:hover {
-      color: #111;
-      transform: rotate(90deg);
-    }
-
-    .panel-content {
-      padding: 5rem 3.5rem 3rem 3.5rem;
-    }
-
-    .form-toggle {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-      border-bottom: 1px solid #e5e5e5;
-    }
-
+    .close-btn:hover { color: #111; transform: rotate(90deg); }
+    .panel-content { padding: 5rem 3.5rem 3rem 3.5rem; }
+    .form-toggle { display: flex; justify-content: center; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e5e5; }
     .toggle-btn {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      background: none;
-      border: none;
-      padding: 0 1rem 1rem 1rem;
-      cursor: pointer;
-      color: #888;
-      position: relative;
-      transition: color 0.3s;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 500; letter-spacing: 0.5px;
+      background: none; border: none; padding: 0 1rem 1rem 1rem; cursor: pointer; color: #888;
+      position: relative; transition: color 0.3s;
     }
-
-    .toggle-btn:hover {
-      color: #111;
-    }
-
-    .toggle-btn.active {
-      color: #111;
-    }
-
+    .toggle-btn:hover { color: #111; }
+    .toggle-btn.active { color: #111; }
     .toggle-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #111;
+      content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: #111;
     }
-
-    .form-container h2 {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .form-container>p {
-      font-size: 1rem;
-      color: #666;
-      text-align: center;
-      margin-bottom: 3rem;
-      line-height: 1.6;
-    }
-
-    .input-group {
-      margin-bottom: 2rem;
-    }
-
+    .form-container h2 { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 400; margin-bottom: 0.5rem; text-align: center; }
+    .form-container>p { font-size: 1rem; color: #666; text-align: center; margin-bottom: 3rem; line-height: 1.6; }
+    .input-group { margin-bottom: 2rem; }
     .input-group label {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-      display: block;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; color: #555;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block;
     }
-
     .input-group input {
-      width: 100%;
-      padding: 0.8rem 0;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      border: none;
-      border-bottom: 1px solid #ccc;
-      background: transparent;
-      outline: none;
-      transition: border-color 0.3s;
+      width: 100%; padding: 0.8rem 0; font-family: var(--font-body); font-size: 1rem; border: none;
+      border-bottom: 1px solid #ccc; background: transparent; outline: none; transition: border-color 0.3s;
     }
-
-    .input-group input:focus {
-      border-color: #111;
-    }
-
+    .input-group input:focus { border-color: #111; }
     .forgot-password {
-      display: block;
-      text-align: right;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: #555;
-      text-decoration: none;
-      margin-top: -1rem;
-      margin-bottom: 2rem;
-      transition: color 0.3s;
+      display: block; text-align: right; font-family: var(--font-body); font-size: 0.9rem;
+      color: #555; text-decoration: none; margin-top: -1rem; margin-bottom: 2rem; transition: color 0.3s;
     }
-
-    .forgot-password:hover {
-      color: #111;
-    }
-
+    .forgot-password:hover { color: #111; }
     .form-btn {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: #111;
-      color: #fff;
-      border: 1px solid #111;
-      cursor: pointer;
-      transition: background 0.3s, border-color 0.3s;
+      width: 100%; padding: 1rem; font-size: 1rem; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; background: #111; color: #fff; border: 1px solid #111;
+      cursor: pointer; transition: background 0.3s, border-color 0.3s;
     }
-
-    .form-btn:hover {
-      background: var(--color-gold);
-      border-color: var(--color-gold);
-    }
-
-    .terms {
-      font-size: 0.85rem;
-      color: #888;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
-
-    .terms a {
-      color: #555;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
+    .form-btn:hover { background: var(--color-gold); border-color: var(--color-gold); }
+    .terms { font-size: 0.85rem; color: #888; text-align: center; margin-bottom: 1.5rem; line-height: 1.5; }
+    .terms a { color: #555; text-decoration: underline; text-underline-offset: 2px; }
     .separator {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #aaa;
-      margin: 2.5rem 0;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      text-transform: uppercase;
+      display: flex; align-items: center; text-align: center; color: #aaa; margin: 2.5rem 0;
+      font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase;
     }
-
-    .separator::before,
-    .separator::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid #e5e5e5;
-    }
-
-    .separator:not(:empty)::before {
-      margin-right: 1em;
-    }
-
-    .separator:not(:empty)::after {
-      margin-left: 1em;
-    }
-
-    .social-login {
-      margin-top: 1.5rem;
-    }
-
+    .separator::before, .separator::after { content: ''; flex: 1; border-bottom: 1px solid #e5e5e5; }
+    .separator:not(:empty)::before { margin-right: 1em; }
+    .separator:not(:empty)::after { margin-left: 1em; }
+    .social-login { margin-top: 1.5rem; }
     .social-btn {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid #ccc;
-      background: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s, border-color 0.3s;
-      text-align: center;
+      width: 100%; padding: 1rem; margin-bottom: 1rem; font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 500; border: 1px solid #ccc; background: #fff;
+      cursor: pointer; transition: background-color 0.3s, border-color 0.3s; text-align: center;
+    }
+    .social-btn:hover { background: #f9f9f9; border-color: #aaa; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .navbar { padding: 1rem 1.5rem; }
+        .menu { display: none; } /* Simplified for example, could be a hamburger menu */
+        .brand-story { flex-direction: column; padding: 4rem 2rem; }
     }
 
-    .social-btn:hover {
-      background: #f9f9f9;
-      border-color: #aaa;
-    }
   </style>
 </head>
 
 <body>
-
-  <video autoplay muted loop class="video-bg">
-    <source src="fashion.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
 
   <header>
     <nav class="navbar">
@@ -598,73 +348,63 @@
       </ul>
       <div class="icons">
         <input type="text" placeholder="Search...">
-        <!-- MODIFIED: Icon order changed -->
         <a href="cart.html">🛒</a>
         <a href="#" id="login-trigger">Login/Signup</a>
       </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>The Fall 2025 Collection</h1>
-    <p>Experience timeless luxury with Velour Society</p>
-    <button>Shop Now</button>
-  </section>
-
-  <section class="categories">
-    <a href="men.html" class="category-card">
-      <img src="men.jpeg" alt="Men">
-      <h2>Men</h2>
-    </a>
-    <a href="women.html" class="category-card">
-      <img src="female.jpeg" alt="Women">
-      <h2>Women</h2>
-    </a>
-    <a href="accessories.html" class="category-card">
-      <img src="accessory.jpeg" alt="Accessories">
-      <h2>Accessories</h2>
-    </a>
-  </section>
-
-  <section class="featured-revamped">
-    <div class="featured-header">
-      <h2>Featured Collection</h2>
-      <a href="#" class="view-all-link">View All</a>
-    </div>
-
-    <div class="product-showcase">
-      <div class="showcase-item">
-        <div class="showcase-image">
-          <img src="product1.jpg" alt="Classic Wool Coat">
-        </div>
-        <div class="showcase-info">
-          <h3>Classic Wool Coat</h3>
-          <p>$450</p>
-        </div>
-      </div>
-
-      <div class="showcase-item">
-        <div class="showcase-image">
-          <img src="product2.jpg" alt="Velour Leather Bag">
-        </div>
-        <div class="showcase-info">
-          <h3>Velour Leather Bag</h3>
-          <p>$320</p>
-        </div>
-      </div>
-
-      <div class="showcase-item">
-        <div class="showcase-image">
-          <img src="product3.jpg" alt="Silk Evening Dress">
-        </div>
-        <div class="showcase-info">
-          <h3>Silk Evening Dress</h3>
-          <p>$780</p>
-        </div>
-      </div>
-
+  <!-- Section 1: Main Hero -->
+  <section class="hero" id="main-hero">
+    <video autoplay muted loop class="hero-video-bg">
+      <source src="fashion.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="hero-content">
+        <h1>The Fall 2025 Collection</h1>
+        <p>Experience timeless luxury with Velour Society</p>
+        <a href="#featured-collection" class="cta-button">Explore Now</a>
     </div>
   </section>
+
+  <!-- Section 2: Featured Collection Hero -->
+  <section class="hero" id="featured-collection">
+    <video autoplay muted loop class="hero-video-bg">
+        <source src="featured_collection.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="hero-content">
+        <h1>Featured Collection</h1>
+        <p>Curated pieces that define modern elegance.</p>
+        <a href="collection.html" class="cta-button">View All</a>
+    </div>
+  </section>
+  
+  <!-- Section 3: Shop by Category Hero -->
+  <section class="hero" id="shop-by-category-hero">
+    <video autoplay muted loop class="hero-video-bg">
+        <source src="category_video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="hero-content">
+        <h1>Shop By Category</h1>
+        <p>Find your signature style with our dedicated collections.</p>
+        <a href="categories.html" class="cta-button">Discover</a>
+    </div>
+  </section>
+  
+  <!-- NEW: Brand Story Section -->
+  <section class="brand-story" id="our-story">
+      <div class="story-image">
+          <img src="story_image.jpeg" alt="A fashion designer carefully crafting a garment.">
+      </div>
+      <div class="story-content">
+          <h2>The Velour Legacy</h2>
+          <p>Founded on the principles of enduring style and meticulous craftsmanship, Velour Society is more than a brand; it's a narrative of modern luxury. We believe in creating pieces that are both timeless and contemporary, designed to be cherished for years to come.</p>
+          <p>Each garment is born from the finest materials, sourced responsibly and transformed by artisans who share our passion for quality. Our philosophy is simple: to create beautiful, meaningful apparel that empowers the individual.</p>
+      </div>
+  </section>
+
 
   <footer>
     <p>© 2025 Velour Society. All Rights Reserved.</p>
@@ -675,10 +415,8 @@
     </p>
   </footer>
 
-  <!-- Page Overlay -->
+  <!-- Page Overlay & Login/Signup Panel -->
   <div class="page-overlay" id="page-overlay"></div>
-
-  <!-- Login/Signup Sliding Panel -->
   <div class="login-signup-panel" id="login-signup-panel">
     <button class="close-btn" id="close-panel-btn">&times;</button>
     <div class="panel-content">
@@ -686,8 +424,6 @@
         <button id="show-login-btn" class="toggle-btn active">Login</button>
         <button id="show-signup-btn" class="toggle-btn">Sign Up</button>
       </div>
-
-      <!-- Login Form -->
       <div class="form-container" id="login-form">
         <h2>Welcome Back</h2>
         <p>Enter your details to sign in to your account.</p>
@@ -709,8 +445,6 @@
           <button class="social-btn">Continue with Apple</button>
         </div>
       </div>
-
-      <!-- Signup Form -->
       <div class="form-container" id="signup-form" style="display: none;">
         <h2>Create Account</h2>
         <p>Join the Velour Society for an exclusive experience.</p>
@@ -736,55 +470,39 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // --- Panel Elements ---
       const loginTrigger = document.getElementById('login-trigger');
       const panel = document.getElementById('login-signup-panel');
       const closeBtn = document.getElementById('close-panel-btn');
       const overlay = document.getElementById('page-overlay');
-
-      // --- Form Toggle Elements ---
       const showLoginBtn = document.getElementById('show-login-btn');
       const showSignupBtn = document.getElementById('show-signup-btn');
       const loginForm = document.getElementById('login-form');
       const signupForm = document.getElementById('signup-form');
 
-      // --- Functions to Open/Close Panel ---
       const openPanel = () => {
         panel.classList.add('is-open');
         overlay.classList.add('is-open');
         document.body.classList.add('panel-open');
       };
-
       const closePanel = () => {
         panel.classList.remove('is-open');
         overlay.classList.remove('is-open');
         document.body.classList.remove('panel-open');
       };
 
-      // --- Event Listeners for Panel ---
-      loginTrigger.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default link behavior
-        openPanel();
-      });
-
+      loginTrigger.addEventListener('click', (e) => { e.preventDefault(); openPanel(); });
       closeBtn.addEventListener('click', closePanel);
       overlay.addEventListener('click', closePanel);
-
-      // Close panel with the 'Escape' key for accessibility
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && panel.classList.contains('is-open')) {
-          closePanel();
-        }
+        if (e.key === 'Escape' && panel.classList.contains('is-open')) closePanel();
       });
 
-      // --- Event Listeners for Form Toggling ---
       showLoginBtn.addEventListener('click', () => {
         showLoginBtn.classList.add('active');
         showSignupBtn.classList.remove('active');
         loginForm.style.display = 'block';
         signupForm.style.display = 'none';
       });
-
       showSignupBtn.addEventListener('click', () => {
         showSignupBtn.classList.add('active');
         showLoginBtn.classList.remove('active');
@@ -795,5 +513,5 @@
   </script>
 
 </body>
-
 </html>
+

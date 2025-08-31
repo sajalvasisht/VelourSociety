@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop by Category - Velour Society</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background: #fff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        /* --- Shop by Category Vertical Layout --- */
+        .category-page {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .category-split-panel {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .category-split-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .category-split-panel .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0.9;
+        }
+
+        .category-split-panel:hover .content {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .category-split-panel h2 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .category-split-panel p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            background-color: rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="category-page" id="category-page">
+        <a href="men.html" class="category-split-panel"
+            style="background-image: url('men.jpeg');">
+            <div class="content">
+                <h2>Men</h2>
+                <p>Shop Now</p>
+            </div>
+        </a>
+        <a href="women.html" class="category-split-panel"
+            style="background-image: url('female.jpeg');">
+            <div class="content">
+                <h2>Women</h2>
+                <p>Shop Now</p>
+            </div>
+        </a>
+        <a href="accessories.html" class="category-split-panel"
+            style="background-image: url('accessory.jpeg');">
+            <div class="content">
+                <h2>Accessories</h2>
+                <p>Shop Now</p>
+            </div>
+        </a>
+    </main>
+
+</body>
+
+</html>
+
