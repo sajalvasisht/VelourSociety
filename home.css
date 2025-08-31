@@ -1,0 +1,553 @@
+/* My CSS File for Velour Society
+  I'm putting all the styles in here to keep my HTML clean.
+*/
+
+/* --- Google Fonts and Basic Setup --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+/* A little reset to make all browsers behave the same */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* This is like a storage for my favorite fonts and colors */
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --color-gold: #d4af37;
+}
+
+/* --- Page Scrolling and Basic Styles --- */
+
+/* This makes the whole page snap when I scroll */
+html, body {
+    height: 100%;
+    overflow: hidden; /* Important for the scroll container to work */
+}
+
+body {
+  font-family: var(--font-heading);
+  background: #fff;
+  color: #111;
+}
+
+/* This is the main box that actually scrolls */
+.scroll-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* This is the magic for snapping */
+}
+
+/* I'm telling every main section to be a snap point */
+.snap-section {
+    scroll-snap-align: start;
+    height: 100vh; /* Make each section fill the whole screen height */
+    position: relative;
+}
+
+/* Using my body font for smaller text elements */
+p, button, input, .main-menu li a, footer {
+  font-family: var(--font-body);
+}
+
+
+/* --- Header and Navigation Bar --- */
+header {
+  position: fixed; /* Keeps the header at the top */
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent; /* Starts transparent */
+  transition: background 0.4s ease; /* Smooth color change */
+}
+
+/* This class gets added by JavaScript when I scroll down */
+header.scrolled {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: #fff;
+}
+
+.logo-link { 
+  text-decoration: none; 
+  color: #fff; 
+}
+
+.logo { 
+  font-size: 1.8rem; 
+  font-weight: bold; 
+  letter-spacing: 2px; 
+}
+
+/* This is the main menu for desktops */
+.main-menu { 
+  list-style: none; 
+  display: flex; 
+  gap: 2.5rem; 
+}
+
+.main-menu li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.main-menu li a:hover { 
+  color: var(--color-gold); 
+}
+
+/* Icons on the right of the navbar */
+.icons { 
+  display: flex; 
+  align-items: center; 
+}
+.icons input {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 20px;
+}
+.icons a { 
+  margin-left: 1rem; 
+  font-size: 1.2rem; 
+  text-decoration: none; 
+  color: #fff; 
+}
+
+/* Hamburger menu for mobile */
+.hamburger { 
+  display: none; /* Hidden on desktop */
+  cursor: pointer; 
+}
+.hamburger .bar { 
+  display: block; 
+  width: 25px; 
+  height: 2px; 
+  margin: 5px auto; 
+  background-color: #fff; 
+}
+
+/* The actual mobile menu that slides in */
+.mobile-nav {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.95); 
+    z-index: 100;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    opacity: 0; /* Starts invisible */
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+}
+/* This class gets added by JS to show the menu */
+.mobile-nav.is-open { 
+  opacity: 1; 
+  visibility: visible; 
+}
+.mobile-nav a {
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 2rem; 
+    margin: 1.5rem 0;
+}
+
+
+/* --- Fullscreen Video Sections --- */
+.hero {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    color: #fff; 
+    overflow: hidden; /* Makes sure the video doesn't bleed out */
+}
+
+/* This is for the slow zoom animation on the videos */
+@keyframes kenburns-effect {
+  0% { transform: scale(1.05) translate(-50%, -50%); }
+  100% { transform: scale(1.15) translate(-50%, -50%); }
+}
+
+.hero-video-bg {
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    min-width: 100%; 
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    animation: kenburns-effect 40s infinite alternate ease-in-out;
+}
+
+/* The dark overlay on top of the video to make text readable */
+.video-overlay { 
+  position: absolute; 
+  top:0; 
+  left:0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0,0,0,0.4); 
+  z-index: -1; 
+}
+
+.hero-content { 
+  z-index: 1; 
+  padding: 2rem; 
+}
+.hero-content h1 { 
+  font-size: 3.5rem; 
+  margin-bottom: 1rem; 
+}
+.hero-content p { 
+  font-size: 1.2rem; 
+  margin-bottom: 2rem; 
+}
+.hero-content .cta-button {
+    padding: 0.8rem 2rem; 
+    font-size: 1rem; 
+    border: 1px solid #fff; 
+    border-radius: 30px;
+    background: #fff; 
+    color: #111; 
+    cursor: pointer;
+    text-decoration: none;
+}
+.hero-content .cta-button:hover { 
+  background: var(--color-gold); 
+  border-color: var(--color-gold); 
+  color: #fff; 
+}
+
+/* The little "Scroll" indicator at the bottom */
+.scroll-down { 
+  position: absolute; 
+  bottom: 30px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  animation: bounce 2s infinite; 
+}
+.scroll-down a {
+    display: block; 
+    padding-top: 60px; 
+    color: #fff; 
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+.scroll-down a::before { 
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: 50%; 
+  width: 1px; 
+  height: 50px; 
+  background: #fff; 
+}
+
+/* The bouncing animation for the scroll indicator */
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+}
+
+
+/* --- Brand Story Section --- */
+.brand-story { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+  padding: 0 4rem; 
+}
+/* This is for the parallax effect image */
+.story-parallax-bg {
+    background-image: url('photos/brand.jpg'); 
+    background-attachment: fixed; /* This creates the parallax effect */
+    background-position: center;
+    background-size: cover;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+}
+.story-content {
+    flex-basis: 50%; 
+    max-width: 600px; 
+    background: rgba(255,255,255, 0.9);
+    padding: 3rem;
+}
+.story-content h2 { 
+  font-size: 2.8rem; 
+  margin-bottom: 1.5rem; 
+}
+.story-content p { 
+  line-height: 1.8; 
+  color: #444; 
+  margin-bottom: 1rem; 
+}
+
+
+/* --- The Big Footer Section --- */
+.enhanced-footer {
+    background: #f4f4f4; 
+    color: #555;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    padding: 5rem 4rem 3rem 4rem;
+}
+/* A grid to organize the footer links */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 3rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+.footer-column h4 { 
+  font-size: 1.2rem; 
+  margin-bottom: 1.5rem; 
+  color: #111; 
+}
+.footer-column ul { 
+  list-style: none; 
+}
+.footer-column ul li { 
+  margin-bottom: 0.8rem; 
+}
+.footer-column ul li a { 
+  color: #555; 
+  text-decoration: none; 
+}
+.footer-column ul li a:hover { 
+  color: #111; 
+}
+.newsletter-input { 
+  display: flex; 
+  border: 1px solid #ccc; 
+}
+.newsletter-input input { 
+  flex-grow: 1; 
+  border: none; 
+  padding: 0.8rem; 
+}
+.newsletter-input button { 
+  border: none; 
+  background: #111; 
+  color: #fff; 
+  padding: 0 1.5rem; 
+  cursor: pointer; 
+}
+.newsletter-input button:hover { 
+  background: var(--color-gold); 
+}
+.footer-bottom { 
+  text-align: center; 
+  padding-top: 3rem; 
+  font-size: 0.9rem; 
+}
+
+
+/* --- Login and Signup Panel --- */
+/* This is the dark background behind the panel */
+.page-overlay {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+  opacity: 0; 
+  visibility: hidden;
+}
+.page-overlay.is-open { 
+  opacity: 1; 
+  visibility: visible; 
+}
+
+/* This is the panel that slides in from the right */
+.login-signup-panel {
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  height: 100vh; 
+  width: 90%; 
+  max-width: 600px;
+  background: #fff; 
+  z-index: 1000;
+  transform: translateX(100%); /* Start off-screen */
+  transition: transform 0.6s ease;
+}
+.login-signup-panel.is-open { 
+  transform: translateX(0); /* Slide in */
+}
+
+/* Stop the main page from scrolling when the panel is open */
+body.panel-open .scroll-container { 
+  overflow: hidden; 
+}
+
+.close-btn {
+  position: absolute; 
+  top: 1rem; 
+  right: 1.5rem; 
+  font-size: 2.5rem;
+  color: #888; 
+  background: none; 
+  border: none; 
+  cursor: pointer;
+}
+.close-btn:hover { 
+  color: #111; 
+  transform: rotate(90deg); 
+}
+
+.panel-content { 
+  padding: 5rem 3.5rem; 
+}
+.form-toggle { 
+  display: flex; 
+  justify-content: center; 
+  margin-bottom: 2.5rem; 
+  border-bottom: 1px solid #e5e5e5; 
+}
+.toggle-btn {
+  font-size: 1rem;
+  background: none; 
+  border: none; 
+  padding: 0 1rem 1rem 1rem; 
+  cursor: pointer; 
+  color: #888;
+  position: relative;
+}
+.toggle-btn.active { 
+  color: #111; 
+}
+.toggle-btn.active::after {
+  content: ''; 
+  position: absolute; 
+  bottom: -1px; 
+  left: 0; 
+  width: 100%; 
+  height: 2px; 
+  background: #111;
+}
+
+.form-container h2 { 
+  font-size: 2.2rem; 
+  margin-bottom: 0.5rem; 
+  text-align: center; 
+}
+.form-container > p { 
+  color: #666; 
+  text-align: center; 
+  margin-bottom: 3rem; 
+}
+.input-group { 
+  margin-bottom: 2rem; 
+}
+.input-group label {
+  font-size: 0.8rem;
+  color: #555;
+  text-transform: uppercase;
+  display: block;
+}
+.input-group input {
+  width: 100%; 
+  padding: 0.8rem 0;
+  font-size: 1rem; 
+  border: none;
+  border-bottom: 1px solid #ccc; 
+  background: transparent;
+}
+.input-group input:focus { 
+  border-color: #111; 
+}
+.forgot-password {
+  display: block; 
+  text-align: right;
+  color: #555; 
+  text-decoration: none; 
+  margin-bottom: 2rem;
+}
+.form-btn {
+  width: 100%; 
+  padding: 1rem;
+  text-transform: uppercase; 
+  background: #111; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+}
+.form-btn:hover { 
+  background: var(--color-gold); 
+}
+.terms { 
+  font-size: 0.85rem; 
+  color: #888; 
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+}
+.separator {
+  display: flex; 
+  align-items: center; 
+  text-align: center; 
+  color: #aaa; 
+  margin: 2.5rem 0;
+}
+.separator::before, .separator::after { 
+  content: ''; 
+  flex: 1; 
+  border-bottom: 1px solid #e5e5e5; 
+}
+.separator::before { 
+  margin-right: 1em; 
+}
+.separator::after { 
+  margin-left: 1em; 
+}
+.social-btn {
+  width: 100%; 
+  padding: 1rem; 
+  margin-bottom: 1rem;
+  border: 1px solid #ccc; 
+  background: #fff;
+  cursor: pointer;
+}
+
+
+/* --- Responsive Styles for smaller screens --- */
+/* This is for tablets and smaller laptops */
+@media (max-width: 992px) {
+    .navbar { padding: 1rem 1.5rem; }
+    .main-menu { display: none; } /* Hide the desktop menu */
+    .hamburger { display: block; } /* Show the hamburger icon */
+    .brand-story { padding: 0 2rem;}
+    .footer-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns on tablets */
+}
+
+/* This is for mobile phones */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .story-content { padding: 2rem; }
+    .footer-grid { grid-template-columns: 1fr; } /* 1 column on mobile */
+}
