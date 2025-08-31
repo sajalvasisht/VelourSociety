@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Latest Arrivals | Velour Society</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #fff;
+            color: #181818;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: #111 url('https://c8.alamy.com/comp/P4M6HW/a-luxury-store-with-men-clothing-P4M6HW.jpg') center/cover no-repeat;
+            padding: 70px 0 30px 0;
+            text-align: center;
+            border-bottom: 2px solid #181818;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(17, 17, 17, 0.55);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            color: #181818;
+            background: rgba(255, 255, 255, 0.85);
+            display: inline-block;
+            padding: 10px 40px;
+            border-radius: 30px;
+            letter-spacing: 2px;
+            font-size: 2.7rem;
+            margin: 0;
+            font-weight: 700;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .arrivals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 0 60px 0;
+        }
+        
+        .arrival-card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 6px 32px rgba(24, 24, 24, 0.10), 0 1.5px 6px rgba(24, 24, 24, 0.07);
+            width: 330px;
+            overflow: hidden;
+            transition: transform 0.22s, box-shadow 0.22s;
+            border: 1.5px solid #18181811;
+            position: relative;
+        }
+        
+        .arrival-card:hover {
+            transform: translateY(-10px) scale(1.035);
+            box-shadow: 0 12px 40px rgba(24, 24, 24, 0.18), 0 2px 8px rgba(24, 24, 24, 0.10);
+        }
+        
+        .arrival-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-bottom: 1.5px solid #18181811;
+        }
+        
+        .arrival-info {
+            padding: 24px 22px 20px 22px;
+        }
+        
+        .arrival-info h2 {
+            color: #181818;
+            font-size: 1.22rem;
+            margin: 0 0 14px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .arrival-info .price {
+            color: #181818;
+            font-size: 1.15rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .arrival-info .old-price {
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 12px;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .sale-badge {
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            background: #181818;
+            color: #fff;
+            font-weight: bold;
+            padding: 7px 18px;
+            border-radius: 22px;
+            font-size: 1rem;
+            z-index: 2;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(24, 24, 24, 0.10);
+        }
+        
+        @media (max-width: 900px) {
+            .arrivals-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Latest Arrivals</h1>
+        </div>
+    </div>
+    <div class="arrivals-container">
+        <!-- Men Polo T-shirt -->
+        <div class="arrival-card">
+            <span class="sale-badge">22% OFF</span>
+            <img src="https://www.aristobrat.in/cdn/shop/files/LuxuryPolo_Caramel_Greekmeander1.jpg?v=1717830489&width=1080" alt="Men's Polo T-shirt">
+            <div class="arrival-info">
+                <h2>Men's Polo T-shirt</h2>
+                <span class="old-price">$45</span>
+                <span class="price">$35</span>
+            </div>
+        </div>
+        <!-- Adil Qadri Perfume -->
+        <div class="arrival-card">
+            <span class="sale-badge">15% OFF</span>
+            <img src="https://www.adilqadri.com/cdn/shop/files/WhatsApp_Image_2025-07-27_at_12.25.04_AM_1.jpg?v=1755198327&width=3464" alt="Adil Qadri Perfume">
+            <div class="arrival-info">
+                <h2>Adil Qadri Perfume</h2>
+                <span class="old-price">$60</span>
+                <span class="price">$51</span>
+            </div>
+        </div>
+        <!-- Men Sunglasses -->
+        <div class="arrival-card">
+            <span class="sale-badge">30% OFF</span>
+            <img src="https://faadu.in/public/products/player-sunglasses-06.webp" alt="Sunglasses">
+            <div class="arrival-info">
+                <h2>Sunglasses</h2>
+                <span class="old-price">$70</span>
+                <span class="price">$49</span>
+            </div>
+        </div>
+        <!-- Women Gown -->
+        <div class="arrival-card">
+            <span class="sale-badge">25% OFF</span>
+            <img src="https://i.pinimg.com/1200x/18/1a/e9/181ae99078351b36124a74bc99438188.jpg" alt="Woman Wearing Gown">
+            <div class="arrival-info">
+                <h2>Women's Velvet Gown</h2>
+                <span class="old-price">$220</span>
+                <span class="price">$165</span>
+            </div>
+        </div>
+        <!-- Women Watch -->
+        <div class="arrival-card">
+            <span class="sale-badge">18% OFF</span>
+            <img src="https://static.helioswatchstore.com/media/blog/428%20x%20390%20fossil.png" alt="Women's Watch">
+            <div class="arrival-info">
+                <h2>Women's Luxury Watch</h2>
+                <span class="old-price">$110</span>
+                <span class="price">$90</span>
+            </div>
+        </div>
+        <!-- Women Purse -->
+        <div class="arrival-card">
+            <span class="sale-badge">20% OFF</span>
+            <img src="https://sarmanluxury.in/cdn/shop/files/rn-image_picker_lib_temp_3140a2e3-24c8-4fe6-8690-d7208c8b2db1.jpg?v=1712840520">
+            <div class="arrival-info">
+                <h2> Women's Purse</h2>
+                <span class="old-price">$350</span>
+                <span class="price">$245</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
