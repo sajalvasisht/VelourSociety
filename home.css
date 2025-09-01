@@ -1,20 +1,15 @@
-/* My CSS File for Velour Society
-  I'm putting all the styles in here to keep my HTML clean.
-*/
-
-/* --- Google Fonts and Basic Setup --- */
+/* My CSS File for Velour Society --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
 
-/* A little reset to make all browsers behave the same */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* This is like a storage for my favorite fonts and colors */
 :root {
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
@@ -23,12 +18,12 @@
 
 /* --- Page Scrolling and Basic Styles --- */
 
-/* This makes the whole page snap when I scroll */
+
 html,
 body {
   height: 100%;
   overflow: hidden;
-  /* Important for the scroll container to work */
+  
 }
 
 body {
@@ -37,24 +32,19 @@ body {
   color: #111;
 }
 
-/* This is the main box that actually scrolls */
 .scroll-container {
   height: 100%;
   width: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  /* This is the magic for snapping */
 }
 
-/* I'm telling every main section to be a snap point */
 .snap-section {
   scroll-snap-align: start;
   height: 100vh;
-  /* Make each section fill the whole screen height */
   position: relative;
 }
 
-/* Using my body font for smaller text elements */
 p,
 button,
 input,
@@ -67,21 +57,16 @@ footer {
 /* --- Header and Navigation Bar --- */
 header {
   position: fixed;
-  /* Keeps the header at the top */
   top: 0;
   width: 100%;
   z-index: 10;
   background: transparent;
-  /* Starts transparent */
   transition: background 0.4s ease;
-  /* Smooth color change */
 }
 
-/* This class gets added by JavaScript when I scroll down */
 header.scrolled {
   background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(10px);
-  /* Frosted glass effect */
 }
 
 .navbar {
@@ -99,19 +84,14 @@ header.scrolled {
 
 .logo {
   font-family: 'Montserrat', sans-serif;
-  /* Using your body font for a modern twist */
   font-size: 1.6rem;
   font-weight: 300;
-  /* Light and airy font weight */
   text-transform: uppercase;
   letter-spacing: 6px;
-  /* Very wide spacing is key for this look */
   color: #fff;
   padding-left: 6px;
-  /* Balances the extra letter-spacing on the left */
 }
 
-/* This is the main menu for desktops */
 .main-menu {
   list-style: none;
   display: flex;
@@ -129,7 +109,6 @@ header.scrolled {
   color: var(--color-gold);
 }
 
-/* Icons on the right of the navbar */
 .icons {
   display: flex;
   align-items: center;
@@ -165,7 +144,6 @@ header.scrolled {
   background-color: #fff;
 }
 
-/* The actual mobile menu that slides in */
 .mobile-nav {
   position: fixed;
   top: 0;
@@ -179,12 +157,10 @@ header.scrolled {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  /* Starts invisible */
   visibility: hidden;
   transition: opacity 0.4s ease;
 }
 
-/* This class gets added by JS to show the menu */
 .mobile-nav.is-open {
   opacity: 1;
   visibility: visible;
@@ -206,10 +182,8 @@ header.scrolled {
   text-align: center;
   color: #fff;
   overflow: hidden;
-  /* Makes sure the video doesn't bleed out */
 }
 
-/* This is for the slow zoom animation on the videos */
 @keyframes kenburns-effect {
   0% {
     transform: scale(1.05) translate(-50%, -50%);
@@ -231,7 +205,6 @@ header.scrolled {
   animation: kenburns-effect 40s infinite alternate ease-in-out;
 }
 
-/* The dark overlay on top of the video to make text readable */
 .video-overlay {
   position: absolute;
   top: 0;
@@ -274,7 +247,6 @@ header.scrolled {
   color: #fff;
 }
 
-/* The little "Scroll" indicator at the bottom */
 .scroll-down {
   position: absolute;
   bottom: 30px;
@@ -301,7 +273,6 @@ header.scrolled {
   background: #fff;
 }
 
-/* The bouncing animation for the scroll indicator */
 @keyframes bounce {
 
   0%,
@@ -315,7 +286,6 @@ header.scrolled {
 }
 
 
-/* --- Brand Story Section --- */
 .brand-story {
   display: flex;
   align-items: center;
@@ -323,11 +293,9 @@ header.scrolled {
   padding: 0 4rem;
 }
 
-/* This is for the parallax effect image */
 .story-parallax-bg {
   background-image: url('photos/brand.jpg');
   background-attachment: fixed;
-  /* This creates the parallax effect */
   background-position: center;
   background-size: cover;
   position: absolute;
@@ -357,7 +325,6 @@ header.scrolled {
 }
 
 
-/* --- UPDATED: The Big Footer Section --- */
 .enhanced-footer {
   background: #111;
   color: #aaa;
@@ -489,7 +456,6 @@ header.scrolled {
 
 
 /* --- Login and Signup Panel --- */
-/* This is the dark background behind the panel */
 .page-overlay {
   position: fixed;
   top: 0;
@@ -507,7 +473,6 @@ header.scrolled {
   visibility: visible;
 }
 
-/* This is the panel that slides in from the right */
 .login-signup-panel {
   position: fixed;
   top: 0;
@@ -518,16 +483,15 @@ header.scrolled {
   background: #fff;
   z-index: 1000;
   transform: translateX(100%);
-  /* Start off-screen */
+  
   transition: transform 0.6s ease;
 }
 
 .login-signup-panel.is-open {
   transform: translateX(0);
-  /* Slide in */
+  
 }
 
-/* Stop the main page from scrolling when the panel is open */
 body.panel-open .scroll-container {
   overflow: hidden;
 }
@@ -681,8 +645,6 @@ body.panel-open .scroll-container {
 }
 
 
-/* --- Responsive Styles for smaller screens --- */
-/* This is for tablets and smaller laptops */
 @media (max-width: 992px) {
   .navbar {
     padding: 1rem 1.5rem;

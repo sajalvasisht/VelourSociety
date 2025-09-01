@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velour Society - Latest Arrivals</title>
-    <!-- Importing the correct brand fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* --- Base Styles and Variables --- */
+       
         :root {
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
@@ -29,14 +28,13 @@
             color: #333;
         }
         
-        /* --- Replicated Navbar from Main Site --- */
         header {
-          position: sticky; /* Sticky is better for a content page */
+          position: sticky; 
           top: 0;
           width: 100%;
           z-index: 10;
-          background: #ffffff; /* UPDATED: Changed to white for a cleaner look */
-          box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* ADDED: Subtle shadow for depth */
+          background: #ffffff; 
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
           transition: background 0.4s ease;
         }
 
@@ -45,16 +43,16 @@
           justify-content: space-between;
           align-items: center;
           padding: 1rem 3rem;
-          color: #111; /* UPDATED: Changed text color to dark */
+          color: #111; 
         }
         
-        .logo-link { text-decoration: none; color: #111; } /* UPDATED: Changed text color to dark */
+        .logo-link { text-decoration: none; color: #111; } 
         .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
 
         .main-menu { list-style: none; display: flex; gap: 2.5rem; }
         .main-menu li a {
           text-decoration: none;
-          color: #111; /* UPDATED: Changed text color to dark */
+          color: #111; 
           font-size: 1rem;
           transition: color 0.3s ease;
           font-weight: 500;
@@ -142,7 +140,7 @@
         }
         
         .price {
-            color: var(--color-gold); /* Using brand's gold color */
+            color: var(--color-gold); 
             font-weight: 500;
         }
         
@@ -150,7 +148,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: #111; /* Changed to elegant black */
+            background: #111; 
             color: white;
             font-size: 0.8rem;
             padding: 6px 12px;
@@ -181,13 +179,12 @@
         .newsletter-input button:hover { background: var(--color-gold); }
         .footer-bottom { text-align: center; padding-top: 3rem; font-size: 0.9rem; width: 100%; }
 
-        /* Responsive */
         @media (max-width: 992px) {
             .navbar { padding: 1rem 1.5rem; }
             .arrivals-container { padding: 2rem 1.5rem; }
         }
         @media (max-width: 768px) {
-            .main-menu { display: none; } /* On a real site, this would become a hamburger */
+            .main-menu { display: none; } 
             .arrivals-container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         }
 
@@ -222,7 +219,7 @@
 
     <!-- Arrivals -->
     <div class="arrivals-container">
-        <!-- Men Polo T-shirt -->
+        
         <a href="#" class="arrival-card">
             <div class="image-container">
                 <span class="sale-badge">22% OFF</span>
@@ -267,7 +264,6 @@
             </div>
         </a>
 
-        <!-- Women's Velvet Gown -->
         <a href="#" class="arrival-card">
             <div class="image-container">
                 <span class="sale-badge">25% OFF</span>
@@ -282,7 +278,6 @@
             </div>
         </a>
 
-        <!-- Women's Watch -->
         <a href="#" class="arrival-card">
             <div class="image-container">
                 <span class="sale-badge">18% OFF</span>
@@ -297,7 +292,6 @@
             </div>
         </a>
 
-        <!-- Women's Purse -->
         <a href="#" class="arrival-card">
             <div class="image-container">
                 <span class="sale-badge">20% OFF</span>
@@ -313,7 +307,6 @@
         </a>
     </div>
 
-    <!-- Footer from main site for consistency -->
     <footer class="enhanced-footer" id="page-footer">
         <div class="footer-grid">
             <div class="footer-column">
