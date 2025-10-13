@@ -8,7 +8,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -31,11 +30,7 @@
       line-height: 1.6;
     }
 
-    p,
-    button,
-    input,
-    .menu li a,
-    footer {
+    p, button, input, .menu li a, footer {
       font-family: var(--font-body);
     }
 
@@ -212,12 +207,6 @@
       border-bottom: 1px solid #eee;
     }
 
-    .product-image .placeholder {
-      font-size: 2.5rem;
-      color: #ccc;
-      font-weight: bold;
-    }
-
     .product-info {
       padding: 1.5rem;
     }
@@ -270,11 +259,6 @@
       font-size: 0.9rem;
     }
 
-    footer p {
-      margin-bottom: 1rem;
-      opacity: 0.8;
-    }
-
     footer a {
       color: #fff;
       text-decoration: none;
@@ -287,38 +271,10 @@
       color: var(--color-gold);
       opacity: 1;
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1rem;
-      }
-      
-      .menu {
-        gap: 1rem;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .collection {
-        padding: 4rem 2rem;
-      }
-      
-      .product-grid {
-        gap: 2rem;
-      }
-    }
   </style>
 </head>
 
 <body>
-
   <header>
     <nav class="navbar">
       <div class="logo">Velour Society</div>
@@ -337,86 +293,86 @@
 
   <section class="hero">
     <h1>Women's Collection</h1>
-    <p>Discover elegant womenswear designed for the modern woman. Sophisticated style meets contemporary fashion.</p>
+    <p>Discover elegant womenswear designed for the modern woman.</p>
     <button>Explore Collection</button>
   </section>
 
   <section class="collection">
     <div class="collection-header">
       <h2>Featured Women's Clothing</h2>
-      <p>Elevate your wardrobe with our curated selection of premium womenswear</p>
+      <p>Elevate your wardrobe with our curated selection.</p>
     </div>
 
     <div class="product-grid">
       <div class="product-card">
         <div class="product-image">
-          <img src="photos/Elegant_evening_dress.png" alt="Elegant Evening Dress" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/Elegant_evening_dress.png" alt="Elegant Evening Dress" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Elegant Evening Dress</h3>
           <p>$520</p>
           <div class="description">Stunning evening gown for special occasions</div>
-          <a href="cart.html?product=Elegant+Evening+Dress&price=520" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="photos/cashmere_sweater.png" alt="Cashmere Sweater" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/cashmere_sweater.png" alt="Cashmere Sweater" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Cashmere Sweater</h3>
           <p>$280</p>
           <div class="description">Luxurious cashmere sweater for ultimate comfort</div>
-          <a href="cart.html?product=Cashmere+Sweater&price=280" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="photos/silk_blouse.png" alt="Silk Blouse" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/silk_blouse.png" alt="Silk Blouse" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Silk Blouse</h3>
           <p>$180</p>
           <div class="description">Elegant silk blouse for professional wear</div>
-          <a href="cart.html?product=Silk+Blouse&price=180" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="photos/Designer_skirt.png" alt="Designer Skirt" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/Designer_skirt.png" alt="Designer Skirt" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Designer Skirt</h3>
           <p>$220</p>
           <div class="description">Chic designer skirt for everyday elegance</div>
-          <a href="cart.html?product=Designer+Skirt&price=220" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-        <img src="photos/Leather_handbag.png" alt="Leather Handbag" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/Leather_handbag.png" alt="Leather Handbag" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Leather Handbag</h3>
           <p>$450</p>
           <div class="description">Premium leather handbag with elegant design</div>
-          <a href="cart.html?product=Leather+Handbag&price=450" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="photos/Linen_jumpsuit.png" alt="Linen Jumpsuit" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/Linen_jumpsuit.png" alt="Linen Jumpsuit" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="product-info">
           <h3>Linen Jumpsuit</h3>
           <p>$320</p>
           <div class="description">Comfortable linen jumpsuit for summer days</div>
-          <a href="cart.html?product=Linen+Jumpsuit&price=320" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -424,13 +380,84 @@
 
   <footer>
     <p>© 2025 Velour Society. All Rights Reserved.</p>
-    <p>
-      <a href="#">About</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Privacy Policy</a>
-    </p>
+    <p><a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
   </footer>
 
-</body>
+  <script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  document.querySelectorAll(".product-card").forEach(card => {
+    const btn = card.querySelector(".add-to-cart");
+    const name = card.querySelector("h3").textContent.trim();
+    const price = parseFloat(card.querySelector("p").textContent.replace("$", "").trim());
+    const image = card.querySelector("img").src; // renamed variable
+
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      btn.outerHTML = `
+        <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
+          <button class="decrease" style="padding:5px 10px;">−</button>
+          <span class="qty">${existing.qty}</span>
+          <button class="increase" style="padding:5px 10px;">+</button>
+        </div>`;
+      updateControls(card, name, price, image);
+    }
+
+    btn.addEventListener("click", () => {
+      const existingItem = cart.find(i => i.name === name);
+      if (!existingItem) {
+        cart.push({ name, price, image, qty: 1 }); // fixed key
+        localStorage.setItem("cart", JSON.stringify(cart));
+        btn.outerHTML = `
+          <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
+            <button class="decrease" style="padding:5px 10px;">−</button>
+            <span class="qty">1</span>
+            <button class="increase" style="padding:5px 10px;">+</button>
+          </div>`;
+        updateControls(card, name, price, image);
+      }
+    });
+  });
+
+  function updateControls(card, name, price, image) {
+    const control = card.querySelector(".qty-control");
+    const qtySpan = control.querySelector(".qty");
+    const inc = control.querySelector(".increase");
+    const dec = control.querySelector(".decrease");
+
+    inc.addEventListener("click", () => {
+      const item = cart.find(i => i.name === name);
+      item.qty++;
+      qtySpan.textContent = item.qty;
+      localStorage.setItem("cart", JSON.stringify(cart));
+    });
+
+    dec.addEventListener("click", () => {
+      const item = cart.find(i => i.name === name);
+      if (item.qty > 1) {
+        item.qty--;
+        qtySpan.textContent = item.qty;
+      } else {
+        const index = cart.findIndex(i => i.name === name);
+        cart.splice(index, 1);
+        control.outerHTML = `<button class="add-to-cart">Add to Cart</button>`;
+        const btn = card.querySelector(".add-to-cart");
+        btn.addEventListener("click", () => {
+          cart.push({ name, price, image, qty: 1 }); // fixed key
+          localStorage.setItem("cart", JSON.stringify(cart));
+          btn.outerHTML = `
+            <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
+              <button class="decrease" style="padding:5px 10px;">−</button>
+              <span class="qty">1</span>
+              <button class="increase" style="padding:5px 10px;">+</button>
+            </div>`;
+          updateControls(card, name, price, image);
+        });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+    });
+  }
+</script>
+
+</body>
 </html>
