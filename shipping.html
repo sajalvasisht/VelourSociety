@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shipping & Delivery - Velour Society</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --color-gold: #d4af37;
+            --color-dark: #1a1a1a;
+            --color-light: #f8f8f8;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: #fff;
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 10;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-dark);
+            letter-spacing: 2px;
+        }
+        
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .menu li a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu li a:hover {
+            color: var(--color-gold);
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: linear-gradient(135deg, #a78a68, #d4af37);
+            color: #fff;
+            text-align: center;
+            padding: 9rem 2rem 6rem;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #d4af37, #c59b26);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: auto;
+        }
+        /* Shipping Info Section */
+        
+        .shipping-section {
+            background: var(--color-light);
+            padding: 5rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .shipping-box {
+            background: #fff;
+            padding: 3rem 4rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .shipping-box h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-dark);
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        
+        .shipping-box h3 {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        
+        .shipping-box p {
+            margin-top: 0.8rem;
+            color: #444;
+        }
+        
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.2rem;
+        }
+        
+        .shipping-table th,
+        .shipping-table td {
+            border: 1px solid #ddd;
+            padding: 0.9rem 1rem;
+            text-align: center;
+        }
+        
+        .shipping-table th {
+            background: var(--color-gold);
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .shipping-table td {
+            background: #fff;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: var(--color-gold);
+        }
+        
+        footer {
+            background: var(--color-dark);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+        
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--color-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .shipping-box {
+                padding: 2rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Velour Society</div>
+            <ul class="menu">
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="shipping.html" style="color: var(--color-gold);">Shipping</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Shipping & Delivery</h1>
+        <p>Every order from Velour Society is prepared with precision, elegance, and timely delivery.</p>
+    </section>
+
+    <section class="shipping-section">
+        <div class="shipping-box">
+
+            <h2>Our Shipping Promise</h2>
+            <p>
+                Each Velour Society piece is packed with care to ensure it reaches you in flawless condition. We aim to make every delivery as elegant and timely as our designs.
+            </p>
+
+            <h3>📦 Shipping Options</h3>
+            <table class="shipping-table">
+                <tr>
+                    <th>Type</th>
+                    <th>Delivery Time</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Standard Shipping</td>
+                    <td>5–7 Business Days</td>
+                    <td>Free on Orders Above ₹2000</td>
+                </tr>
+                <tr>
+                    <td>Express Shipping</td>
+                    <td>2–3 Business Days</td>
+                    <td>₹199</td>
+                </tr>
+                <tr>
+                    <td>International Shipping</td>
+                    <td>7–14 Business Days</td>
+                    <td>Calculated at Checkout</td>
+                </tr>
+            </table>
+
+            <h3>🕰️ Order Processing</h3>
+            <p>
+                Orders are typically processed within <span class="highlight">1–2 business days</span> (excluding weekends and holidays). Once shipped, you will receive an email with your tracking information.
+            </p>
+
+            <h3>🚚 Tracking Your Order</h3>
+            <p>
+                You can track your package using the tracking link sent via email after dispatch. For assistance, reach us at <span class="highlight">support@veloursociety.com</span>.
+            </p>
+
+            <h3>🎁 Our Packaging</h3>
+            <p>
+                Every order arrives in our signature Velour Society packaging — designed with a timeless aesthetic, ensuring your purchase feels as luxurious as it looks.
+            </p>
+
+            <h3>🌍 International Orders</h3>
+            <p>
+                For international destinations, customs duties or import taxes (if applicable) are the responsibility of the buyer. Delivery times may vary depending on local customs procedures.
+            </p>
+
+            <h3>⚠️ Delivery Issues</h3>
+            <p>
+                In case of any delay, damage, or loss, please notify us within
+                <span class="highlight">7 days</span> of the expected delivery date. Our team will ensure a smooth resolution.
+            </p>
+
+            <h3>💌 Need Help?</h3>
+            <p>
+                Have questions about your delivery? Reach out at <span class="highlight">support@veloursociety.com</span> or visit our
+                <a href="contact.html" style="color: var(--color-gold); text-decoration: none;">Contact Page</a>.
+            </p>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Velour Society. All Rights Reserved.</p>
+        <p><a href="#">About</a> | <a href="#">Shipping</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+</body>
+
+</html>
