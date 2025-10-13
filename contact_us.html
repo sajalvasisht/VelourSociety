@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us - Velour Society</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --color-gold: #d4af37;
+            --color-dark: #1a1a1a;
+            --color-light: #f8f8f8;
+            --color-cream: #fdfaf3;
+        }
+        
+        body {
+            font-family: var(--font-heading);
+            background: #fff;
+            color: var(--color-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        p,
+        button,
+        input,
+        textarea,
+        .menu li a,
+        footer {
+            font-family: var(--font-body);
+        }
+        /* --- Navbar --- */
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--color-dark);
+        }
+        
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .menu li a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .menu li a:hover {
+            color: var(--color-gold);
+        }
+        
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .icons input {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #ccc;
+            background: transparent;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        .icons input:focus {
+            border-color: var(--color-gold);
+        }
+        
+        .icons a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .icons a:hover {
+            color: var(--color-gold);
+        }
+        /* --- Hero --- */
+        
+        .hero {
+            background: linear-gradient(135deg, #a78a68, #d4af37);
+            color: #fff;
+            padding: 9rem 2rem 6rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        /* --- Contact Section --- */
+        
+        .contact-section {
+            background: var(--color-cream);
+            padding: 6rem 3rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .contact-box {
+            background: #fff;
+            padding: 3.5rem 4rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-box h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-box p {
+            text-align: center;
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+        
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        form .full {
+            grid-column: span 2;
+        }
+        
+        label {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.3s ease;
+            background: #fafafa;
+        }
+        
+        input:focus,
+        textarea:focus {
+            border-color: var(--color-gold);
+            background: #fff;
+        }
+        
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+        
+        button {
+            background: var(--color-gold);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-column: span 2;
+            justify-self: center;
+        }
+        
+        button:hover {
+            background: var(--color-dark);
+            transform: translateY(-2px);
+        }
+        /* --- Error / Success Messages --- */
+        
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .success-message {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* --- Footer --- */
+        
+        footer {
+            background: var(--color-dark);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+        
+        footer a:hover {
+            color: var(--color-gold);
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            .menu {
+                gap: 1rem;
+            }
+            form {
+                grid-template-columns: 1fr;
+            }
+            button {
+                grid-column: span 1;
+            }
+            .contact-box {
+                padding: 2.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Velour Society</div>
+            <ul class="menu">
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="contact.html" style="color: var(--color-gold);">Contact</a></li>
+            </ul>
+            <div class="icons">
+                <input type="text" placeholder="Search...">
+                <a href="cart.html">🛒</a>
+                <a href="login.html">Login/Signup</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you — connect with our team for styling advice, collaborations, or inquiries.</p>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section">
+        <div class="contact-box">
+            <h2>Get in Touch</h2>
+            <p>Your story deserves the finest touch. Let’s start the conversation.</p>
+
+            <form id="contactForm" novalidate>
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                    <div class="error" id="nameError"></div>
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <div class="error" id="emailError"></div>
+                </div>
+                <div class="full">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="What’s this about?" required>
+                </div>
+                <div class="full">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Type your message here..." required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                Thanks for your feedback!! <strong>VISIT AGAIN 💫</strong>
+            </div>
+
+            <div class="info">
+                <p><strong>Email:</strong> contact@veloursociety.com</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Address:</strong> 47 Park Avenue, New Delhi, India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Velour Society. All Rights Reserved.</p>
+        <p>
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="#">Privacy Policy</a>
+        </p>
+    </footer>
+
+    <!-- JS Validation -->
+    <script>
+        const form = document.getElementById('contactForm');
+        const nameField = document.getElementById('name');
+        const emailField = document.getElementById('email');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const successMsg = document.getElementById('successMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let valid = true;
+            nameError.textContent = '';
+            emailError.textContent = '';
+
+            // Name validation: only letters and spaces
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(nameField.value.trim())) {
+                nameError.textContent = 'Please enter only letters in name.';
+                valid = false;
+            }
+
+            // Email validation: must contain @
+            if (!emailField.value.includes('@')) {
+                emailError.textContent = 'Email must contain "@" symbol.';
+                valid = false;
+            }
+
+            // If valid
+            if (valid) {
+                form.reset();
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>
