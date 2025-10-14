@@ -198,9 +198,9 @@
 
       <div class="order-summary">
         <h3>Order Summary</h3>
-        <div class="summary-item"><span>Subtotal</span><span id="subtotal">₹0.00</span></div>
-        <div class="summary-item"><span>Tax (8%)</span><span id="tax">₹0.00</span></div>
-        <div class="summary-item total"><span>Total</span><span id="total">₹0.00</span></div>
+        <div class="summary-item"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+        <div class="summary-item"><span>Tax (8%)</span><span id="tax">$0.00</span></div>
+        <div class="summary-item total"><span>Total</span><span id="total">$0.00</span></div>
         <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </div>
@@ -236,7 +236,7 @@
               <span class="quantity">${item.qty}</span>
               <button onclick="changeQty(${index}, 1)">+</button>
             </div>
-            <div class="item-total-price">₹${(item.price * item.qty).toFixed(2)}</div>
+            <div class="item-total-price">$${(item.price * item.qty).toFixed(2)}</div>
           `;
           cartContainer.appendChild(div);
         });
@@ -262,9 +262,9 @@
       cart.forEach(item => subtotal += item.price * item.qty);
       const tax = subtotal * 0.08;
       const total = subtotal + tax;
-      document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
-      document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
-      document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+      document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+      document.getElementById('total').textContent = `$${total.toFixed(2)}`;
     }
 
     function saveCart() {
