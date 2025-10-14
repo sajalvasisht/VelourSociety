@@ -15,7 +15,6 @@
       box-sizing: border-box;
     }
 
-    /* --- 1. General Luxury Enhancements --- */
     :root {
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
@@ -25,22 +24,12 @@
     }
 
     body {
-      font-family: var(--font-heading);
+      font-family: var(--font-body);
       background: #fff;
       color: var(--color-dark);
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
-    p,
-    button,
-    input,
-    .menu li a,
-    footer {
-      font-family: var(--font-body);
-    }
-
-    /* --- Navbar --- */
     header {
       position: fixed;
       top: 0;
@@ -56,10 +45,10 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 3rem;
-      color: var(--color-dark);
     }
 
     .logo {
+      font-family: var(--font-heading);
       font-size: 1.8rem;
       font-weight: bold;
       letter-spacing: 2px;
@@ -75,9 +64,8 @@
     .menu li a {
       text-decoration: none;
       color: var(--color-dark);
-      font-size: 1rem;
-      transition: color 0.3s ease;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     .menu li a:hover {
@@ -93,34 +81,20 @@
     .icons input {
       padding: 0.4rem 0.8rem;
       border: 1px solid #ccc;
-      background: transparent;
-      color: var(--color-dark);
       border-radius: 20px;
       outline: none;
-      font-size: 0.9rem;
-      transition: border-color 0.3s;
-    }
-
-    .icons input::placeholder {
-      color: #888;
-    }
-
-    .icons input:focus {
-      border-color: var(--color-gold);
     }
 
     .icons a {
-      font-size: 1.2rem;
       text-decoration: none;
+      font-size: 1.2rem;
       color: var(--color-dark);
-      transition: color 0.3s;
     }
 
     .icons a:hover {
       color: var(--color-gold);
     }
 
-    /* --- Hero Section --- */
     .hero {
       background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
       color: #fff;
@@ -133,16 +107,12 @@
       font-size: 3.5rem;
       margin-bottom: 1rem;
       font-weight: 400;
-      letter-spacing: 1px;
     }
 
     .hero p {
       font-size: 1.3rem;
       margin-bottom: 2rem;
       opacity: 0.9;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .hero button {
@@ -153,8 +123,6 @@
       background: var(--color-gold);
       color: #fff;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
     }
 
     .hero button:hover {
@@ -162,7 +130,6 @@
       color: var(--color-gold);
     }
 
-    /* --- Collection Section --- */
     .collection {
       padding: 6rem 4rem;
       background: var(--color-light);
@@ -177,7 +144,6 @@
       font-size: 2.8rem;
       font-weight: 400;
       margin-bottom: 1rem;
-      color: var(--color-dark);
     }
 
     .collection-header p {
@@ -209,17 +175,16 @@
 
     .product-image {
       height: 300px;
-      background: #f0f0f0;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid #eee;
     }
 
-    .product-image .placeholder {
-      font-size: 2.5rem;
-      color: #ccc;
-      font-weight: bold;
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .product-info {
@@ -228,16 +193,14 @@
 
     .product-info h3 {
       font-size: 1.3rem;
-      font-weight: 400;
       margin-bottom: 0.5rem;
-      color: var(--color-dark);
     }
 
     .product-info p {
       font-size: 1.1rem;
       color: var(--color-gold);
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .product-info .description {
@@ -256,17 +219,35 @@
       font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
       display: inline-block;
     }
 
     .add-to-cart:hover {
       background: var(--color-dark);
-      transform: translateY(-2px);
     }
 
-    /* --- 3. A More Sophisticated Footer --- */
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quantity-selector button {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--color-dark);
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .quantity-selector span.qty {
+      min-width: 25px;
+      text-align: center;
+      font-weight: 500;
+    }
+
     footer {
       background: var(--color-dark);
       color: #fff;
@@ -293,28 +274,27 @@
       opacity: 1;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
+    @media(max-width:768px) {
       .navbar {
         padding: 1rem;
       }
-      
+
       .menu {
         gap: 1rem;
       }
-      
+
       .hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .hero p {
         font-size: 1.1rem;
       }
-      
+
       .collection {
         padding: 4rem 2rem;
       }
-      
+
       .product-grid {
         gap: 2rem;
       }
@@ -353,89 +333,169 @@
     </div>
 
     <div class="product-grid">
+
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/pocket.jpeg" alt="Silk Scarf" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/pocket.jpeg" alt="Pocket Square">
         </div>
         <div class="product-info">
           <h3>Pheasant-Print Wool Pocket Square</h3>
           <p>$90</p>
           <div class="description">Luxurious silk scarf with elegant patterns</div>
-          <a href="cart.html?product=Silk+Scarf&price=90" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Pheasant-Print Wool Pocket Square" data-price="90">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/gift_set.jpg" alt="Leather Belt" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/gift_set.jpg" alt="Leather Belt Gift Set">
         </div>
         <div class="product-info">
           <h3>Leather Belt Gift Set</h3>
           <p>$110</p>
           <div class="description">Premium leather belt with classic buckle</div>
-          <a href="cart.html?product=Leather+Belt&price=110" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Leather Belt Gift Set" data-price="110">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/coachXpeanut.jpg" alt="Gold Cufflinks" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/coachXpeanut.jpg" alt="Coach X Peanuts Card Case">
         </div>
         <div class="product-info">
           <h3>Coach X Peanuts Card Case</h3>
           <p>$250</p>
           <div class="description">Elegant gold cufflinks for formal wear</div>
-          <a href="cart.html?product=Gold+Cufflinks&price=250" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Coach X Peanuts Card Case" data-price="250">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/Leather_cleaner.jpg" alt="Designer Sunglasses" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/Leather_cleaner.jpg" alt="Leather Cleaner">
         </div>
         <div class="product-info">
           <h3>Leather Cleaner</h3>
           <p>$320</p>
           <div class="description">Stylish sunglasses with UV protection</div>
-          <a href="cart.html?product=Designer+Sunglasses&price=320" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Leather Cleaner" data-price="320">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/stall.jpg" alt="Wool Fedora Hat" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/stall.jpg" alt="Stall">
         </div>
         <div class="product-info">
-          <h3>stall</h3>
+          <h3>Stall</h3>
           <p>$180</p>
           <div class="description">Classic wool fedora for timeless style</div>
-          <a href="cart.html?product=Wool+Fedora+Hat&price=180" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Stall" data-price="180">Add to Cart</button>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-image">
-          <img src="accessories/perfume.jpg" alt="Leather Gloves" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="accessories/perfume.jpg" alt="Imagination Perfume">
         </div>
         <div class="product-info">
           <h3>Imagination Perfume</h3>
           <p>$140</p>
           <div class="description">Soft leather gloves for cold weather</div>
-          <a href="cart.html?product=Leather+Gloves&price=140" class="add-to-cart">Add to Cart</a>
+          <button class="add-to-cart" data-name="Imagination Perfume" data-price="140">Add to Cart</button>
         </div>
       </div>
+
     </div>
   </section>
 
   <footer>
     <p>© 2025 Velour Society. All Rights Reserved.</p>
-    <p>
-      <a href="#">About</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Privacy Policy</a>
-    </p>
+    <p><a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
   </footer>
 
-</body>
+  <script>
+    function updateCart(name, price, image, details, change = 0) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let item = cart.find(i => i.name === name);
 
+      if (item) {
+        item.qty += change;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.name !== name);
+        }
+      } else if (change === 0) {
+        cart.push({ name, price, image, details, qty: 1 });
+        item = cart.find(i => i.name === name);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      return item ? item.qty : 0;
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      const btn = card.querySelector('.add-to-cart');
+      const name = btn.dataset.name;
+      const price = parseFloat(btn.dataset.price);
+      const image = card.querySelector('img').src;
+      const details = card.querySelector('.description')?.textContent || '';
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingItem = cart.find(i => i.name === name);
+
+      function createQtyWrapper(qty) {
+        const qtyWrapper = document.createElement('div');
+        qtyWrapper.className = 'quantity-selector';
+        qtyWrapper.innerHTML = `
+          <button class="decrease">–</button>
+          <span class="qty">${qty}</span>
+          <button class="increase">+</button>
+        `;
+        return qtyWrapper;
+      }
+
+      if (existingItem) {
+        const qtyWrapper = createQtyWrapper(existingItem.qty);
+        btn.replaceWith(qtyWrapper);
+
+        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+          const newQty = updateCart(name, price, image, details, 1);
+          qtyWrapper.querySelector('.qty').textContent = newQty;
+        });
+
+        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+          const newQty = updateCart(name, price, image, details, -1);
+          if (newQty > 0) {
+            qtyWrapper.querySelector('.qty').textContent = newQty;
+          } else {
+            qtyWrapper.replaceWith(btn);
+            btn.textContent = 'Add to Cart';
+          }
+        });
+      }
+
+      btn.addEventListener('click', () => {
+        const currentQty = updateCart(name, price, image, details);
+
+        const qtyWrapper = createQtyWrapper(currentQty);
+        btn.replaceWith(qtyWrapper);
+
+        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+          const newQty = updateCart(name, price, image, details, 1);
+          qtyWrapper.querySelector('.qty').textContent = newQty;
+        });
+
+        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+          const newQty = updateCart(name, price, image, details, -1);
+          if (newQty > 0) {
+            qtyWrapper.querySelector('.qty').textContent = newQty;
+          } else {
+            qtyWrapper.replaceWith(btn);
+            btn.textContent = 'Add to Cart';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
 </html>
