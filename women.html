@@ -2,462 +2,513 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Women's Collection - Velour Society</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Montserrat', sans-serif;
-      --color-gold: #d4af37;
-      --color-dark: #1a1a1a;
-      --color-light: #f8f8f8;
-    }
-
-    body {
-      font-family: var(--font-heading);
-      background: #fff;
-      color: var(--color-dark);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    p, button, input, .menu li a, footer {
-      font-family: var(--font-body);
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid #e5e5e5;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3rem;
-      color: var(--color-dark);
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: var(--color-dark);
-    }
-
-    .menu {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    .menu li a {
-      text-decoration: none;
-      color: var(--color-dark);
-      font-size: 1rem;
-      transition: color 0.3s ease;
-      font-weight: 500;
-    }
-
-    .menu li a:hover {
-      color: var(--color-gold);
-    }
-
-    .icons {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .icons input {
-      padding: 0.4rem 0.8rem;
-      border: 1px solid #ccc;
-      background: transparent;
-      color: var(--color-dark);
-      border-radius: 20px;
-      outline: none;
-      font-size: 0.9rem;
-      transition: border-color 0.3s;
-    }
-
-    .icons input::placeholder {
-      color: #888;
-    }
-
-    .icons input:focus {
-      border-color: var(--color-gold);
-    }
-
-    .icons a {
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: var(--color-dark);
-      transition: color 0.3s;
-    }
-
-    .icons a:hover {
-      color: var(--color-gold);
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
-      color: #fff;
-      padding: 8rem 2rem 4rem;
-      text-align: center;
-      margin-top: 80px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero button {
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      border: 2px solid var(--color-gold);
-      border-radius: 30px;
-      background: var(--color-gold);
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .hero button:hover {
-      background: transparent;
-      color: var(--color-gold);
-    }
-
-    .collection {
-      padding: 6rem 4rem;
-      background: var(--color-light);
-    }
-
-    .collection-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .collection-header h2 {
-      font-size: 2.8rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
-      color: var(--color-dark);
-    }
-
-    .collection-header p {
-      font-size: 1.1rem;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
-      margin-top: 3rem;
-    }
-
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .product-image {
-      height: 300px;
-      background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    .product-info {
-      padding: 1.5rem;
-    }
-
-    .product-info h3 {
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      color: var(--color-dark);
-    }
-
-    .product-info p {
-      font-size: 1.1rem;
-      color: var(--color-gold);
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    .product-info .description {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-    }
-
-    .add-to-cart {
-      padding: 0.8rem 1.5rem;
-      background: var(--color-gold);
-      color: #fff;
-      border: none;
-      border-radius: 25px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .add-to-cart:hover {
-      background: var(--color-dark);
-      transform: translateY(-2px);
-    }
-
-    footer {
-      background: var(--color-dark);
-      color: #fff;
-      text-align: center;
-      padding: 4rem 2rem;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: color 0.3s;
-      opacity: 0.8;
-    }
-
-    footer a:hover {
-      color: var(--color-gold);
-      opacity: 1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Collection - Velour Society</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --color-gold: #d4af37;
+            --color-dark: #1a1a1a;
+            --color-light: #f8f8f8;
+        }
+        
+        body {
+            font-family: var(--font-heading);
+            background: #fff;
+            color: var(--color-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        p,
+        button,
+        input,
+        .menu li a,
+        footer {
+            font-family: var(--font-body);
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            color: var(--color-dark);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--color-dark);
+        }
+        
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .menu li a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .menu li a:hover {
+            color: var(--color-gold);
+        }
+        
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .icons input {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: var(--color-dark);
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        .icons input::placeholder {
+            color: #888;
+        }
+        
+        .icons input:focus {
+            border-color: var(--color-gold);
+        }
+        
+        .icons a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--color-dark);
+            transition: color 0.3s;
+        }
+        
+        .icons a:hover {
+            color: var(--color-gold);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            color: #fff;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero button {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--color-gold);
+            border-radius: 30px;
+            background: var(--color-gold);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .hero button:hover {
+            background: transparent;
+            color: var(--color-gold);
+        }
+        
+        .collection {
+            padding: 6rem 4rem;
+            background: var(--color-light);
+        }
+        
+        .collection-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .collection-header h2 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+        
+        .collection-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 300px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+        }
+        
+        .product-info p {
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .product-info .description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart {
+            padding: 0.8rem 1.5rem;
+            background: var(--color-gold);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--color-dark);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--color-dark);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+        
+        footer a:hover {
+            color: var(--color-gold);
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Velour Society</div>
-      <ul class="menu">
-        <li><a href="men.html">Men</a></li>
-        <li><a href="women.html" style="color: var(--color-gold);">Women</a></li>
-        <li><a href="accessories.html">Accessories</a></li>
-      </ul>
-      <div class="icons">
-        <input type="text" placeholder="Search...">
-        <a href="cart.html">🛒</a>
-        <a href="login.html">Login/Signup</a>
-      </div>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Velour Society</div>
+            <ul class="menu">
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html" style="color: var(--color-gold);">Women</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+            </ul>
+            <div class="icons">
+                <input type="text" placeholder="Search...">
+                <a href="cart.html">🛒</a>
+                <a href="login.html">Login/Signup</a>
+            </div>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <h1>Women's Collection</h1>
-    <p>Discover elegant womenswear designed for the modern woman.</p>
-    <button>Explore Collection</button>
-  </section>
+    <section class="hero">
+        <h1>Women's Collection</h1>
+        <p>Discover elegant womenswear designed for the modern woman.</p>
+        <button>Explore Collection</button>
+    </section>
 
-  <section class="collection">
-    <div class="collection-header">
-      <h2>Featured Women's Clothing</h2>
-      <p>Elevate your wardrobe with our curated selection.</p>
-    </div>
-
-    <div class="product-grid">
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/Elegant_evening_dress.png" alt="Elegant Evening Dress" style="width:100%;height:100%;object-fit:cover;">
+    <section class="collection">
+        <div class="collection-header">
+            <h2>Featured Women's Clothing</h2>
+            <p>Elevate your wardrobe with our curated selection.</p>
         </div>
-        <div class="product-info">
-          <h3>Elegant Evening Dress</h3>
-          <p>$520</p>
-          <div class="description">Stunning evening gown for special occasions</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/cashmere_sweater.png" alt="Cashmere Sweater" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <h3>Cashmere Sweater</h3>
-          <p>$280</p>
-          <div class="description">Luxurious cashmere sweater for ultimate comfort</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
+        <div class="product-grid">
+            <!-- Existing 6 Products -->
+            <div class="product-card">
+                <div class="product-image"><img src="photos/Elegant_evening_dress.png" alt="Elegant Evening Dress" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Elegant Evening Dress</h3>
+                    <p>$520</p>
+                    <div class="description">Stunning evening gown for special occasions</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/silk_blouse.png" alt="Silk Blouse" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <h3>Silk Blouse</h3>
-          <p>$180</p>
-          <div class="description">Elegant silk blouse for professional wear</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
+            <div class="product-card">
+                <div class="product-image"><img src="photos/cashmere_sweater.png" alt="Cashmere Sweater" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Cashmere Sweater</h3>
+                    <p>$280</p>
+                    <div class="description">Luxurious cashmere sweater for ultimate comfort</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/Designer_skirt.png" alt="Designer Skirt" style="width:100%;height:100%;object-fit:cover;">
+            <div class="product-card">
+                <div class="product-image"><img src="photos/silk_blouse.png" alt="Silk Blouse" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Silk Blouse</h3>
+                    <p>$180</p>
+                    <div class="description">Elegant silk blouse for professional wear</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="photos/Designer_skirt.png" alt="Designer Skirt" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Designer Skirt</h3>
+                    <p>$220</p>
+                    <div class="description">Chic designer skirt for everyday elegance</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="photos/Leather_handbag.png" alt="Leather Handbag" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Leather Handbag</h3>
+                    <p>$450</p>
+                    <div class="description">Premium leather handbag with elegant design</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="photos/Linen_jumpsuit.png" alt="Linen Jumpsuit" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Linen Jumpsuit</h3>
+                    <p>$320</p>
+                    <div class="description">Comfortable linen jumpsuit for summer days</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <!-- 10 New Products -->
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Velvet Gown" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Velvet Gown</h3>
+                    <p>$600</p>
+                    <div class="description">Luxurious velvet gown for grand occasions</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Classic Trench Coat" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Classic Trench Coat</h3>
+                    <p>$480</p>
+                    <div class="description">Timeless trench coat for all seasons</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Floral Maxi Dress" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Floral Maxi Dress</h3>
+                    <p>$350</p>
+                    <div class="description">Soft floral maxi dress for casual elegance</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Wool Blazer" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Wool Blazer</h3>
+                    <p>$410</p>
+                    <div class="description">Structured wool blazer for smart layering</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Satin Slip Dress" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Satin Slip Dress</h3>
+                    <p>$390</p>
+                    <div class="description">Elegant satin slip dress for evening wear</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Pleated Midi Skirt" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Pleated Midi Skirt</h3>
+                    <p>$260</p>
+                    <div class="description">Graceful pleated midi skirt in neutral tones</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Tweed Jacket" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Tweed Jacket</h3>
+                    <p>$430</p>
+                    <div class="description">Chic tweed jacket with a vintage flair</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Boho Embroidered Dress" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Boho Embroidered Dress</h3>
+                    <p>$340</p>
+                    <div class="description">Free-spirited embroidered dress for sunny days</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Denim Jacket" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Denim Jacket</h3>
+                    <p>$220</p>
+                    <div class="description">Classic denim jacket for casual styling</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image"><img src="#" alt="Knitted Cardigan" style="width:100%;height:100%;object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3>Knitted Cardigan</h3>
+                    <p>$270</p>
+                    <div class="description">Soft knitted cardigan for cozy layering</div><button class="add-to-cart">Add to Cart</button></div>
+            </div>
         </div>
-        <div class="product-info">
-          <h3>Designer Skirt</h3>
-          <p>$220</p>
-          <div class="description">Chic designer skirt for everyday elegance</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
+    </section>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/Leather_handbag.png" alt="Leather Handbag" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <h3>Leather Handbag</h3>
-          <p>$450</p>
-          <div class="description">Premium leather handbag with elegant design</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
+    <footer>
+        <p>© 2025 Velour Society. All Rights Reserved.</p>
+        <p><a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="photos/Linen_jumpsuit.png" alt="Linen Jumpsuit" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <h3>Linen Jumpsuit</h3>
-          <p>$320</p>
-          <div class="description">Comfortable linen jumpsuit for summer days</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    <script>
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  <footer>
-    <p>© 2025 Velour Society. All Rights Reserved.</p>
-    <p><a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
-  </footer>
+        document.querySelectorAll(".product-card").forEach(card => {
+            const btn = card.querySelector(".add-to-cart");
+            const name = card.querySelector("h3").textContent.trim();
+            const price = parseFloat(card.querySelector("p").textContent.replace("$", "").trim());
+            const image = card.querySelector("img").src;
 
-  <script>
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  document.querySelectorAll(".product-card").forEach(card => {
-    const btn = card.querySelector(".add-to-cart");
-    const name = card.querySelector("h3").textContent.trim();
-    const price = parseFloat(card.querySelector("p").textContent.replace("$", "").trim());
-    const image = card.querySelector("img").src; // renamed variable
-
-    const existing = cart.find(item => item.name === name);
-    if (existing) {
-      btn.outerHTML = `
-        <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
-          <button class="decrease" style="padding:5px 10px;">−</button>
-          <span class="qty">${existing.qty}</span>
-          <button class="increase" style="padding:5px 10px;">+</button>
-        </div>`;
-      updateControls(card, name, price, image);
-    }
-
-    btn.addEventListener("click", () => {
-      const existingItem = cart.find(i => i.name === name);
-      if (!existingItem) {
-        cart.push({ name, price, image, qty: 1 }); // fixed key
-        localStorage.setItem("cart", JSON.stringify(cart));
-        btn.outerHTML = `
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                btn.outerHTML = `
           <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
             <button class="decrease" style="padding:5px 10px;">−</button>
-            <span class="qty">1</span>
+            <span class="qty">${existing.qty}</span>
             <button class="increase" style="padding:5px 10px;">+</button>
           </div>`;
-        updateControls(card, name, price, image);
-      }
-    });
-  });
+                updateControls(card, name, price, image);
+            }
 
-  function updateControls(card, name, price, image) {
-    const control = card.querySelector(".qty-control");
-    const qtySpan = control.querySelector(".qty");
-    const inc = control.querySelector(".increase");
-    const dec = control.querySelector(".decrease");
-
-    inc.addEventListener("click", () => {
-      const item = cart.find(i => i.name === name);
-      item.qty++;
-      qtySpan.textContent = item.qty;
-      localStorage.setItem("cart", JSON.stringify(cart));
-    });
-
-    dec.addEventListener("click", () => {
-      const item = cart.find(i => i.name === name);
-      if (item.qty > 1) {
-        item.qty--;
-        qtySpan.textContent = item.qty;
-      } else {
-        const index = cart.findIndex(i => i.name === name);
-        cart.splice(index, 1);
-        control.outerHTML = `<button class="add-to-cart">Add to Cart</button>`;
-        const btn = card.querySelector(".add-to-cart");
-        btn.addEventListener("click", () => {
-          cart.push({ name, price, image, qty: 1 }); // fixed key
-          localStorage.setItem("cart", JSON.stringify(cart));
-          btn.outerHTML = `
+            btn.addEventListener("click", () => {
+                const existingItem = cart.find(i => i.name === name);
+                if (!existingItem) {
+                    cart.push({
+                        name,
+                        price,
+                        image,
+                        qty: 1
+                    });
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    btn.outerHTML = `
             <div class="qty-control" style="display:flex;gap:10px;align-items:center;">
               <button class="decrease" style="padding:5px 10px;">−</button>
               <span class="qty">1</span>
               <button class="increase" style="padding:5px 10px;">+</button>
             </div>`;
-          updateControls(card, name, price, image);
+                    updateControls(card, name, price, image);
+                }
+            });
         });
-      }
-      localStorage.setItem("cart", JSON.stringify(cart));
-    });
-  }
-</script>
 
+        function updateControls(card, name, price, image) {
+            const qtyControl = card.querySelector(".qty-control");
+            qtyControl.querySelector(".increase").addEventListener("click", () => {
+                const item = cart.find(i => i.name === name);
+                item.qty++;
+                qtyControl.querySelector(".qty").textContent = item.qty;
+                localStorage.setItem("cart", JSON.stringify(cart));
+            });
+
+            qtyControl.querySelector(".decrease").addEventListener("click", () => {
+                const item = cart.find(i => i.name === name);
+                if (item.qty > 1) {
+                    item.qty--;
+                    qtyControl.querySelector(".qty").textContent = item.qty;
+                } else {
+                    const index = cart.indexOf(item);
+                    cart.splice(index, 1);
+                    card.querySelector(".qty-control").outerHTML = `<button class="add-to-cart">Add to Cart</button>`;
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+            });
+        }
+    </script>
 </body>
+
 </html>

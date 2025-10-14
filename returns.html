@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Returns & Exchanges | Velour Society</title>
+
+    <style>
+        /* ---------- Global Styles ---------- */
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f3ee;
+            color: #2a2a2a;
+            overflow-x: hidden;
+        }
+        /* ---------- Header ---------- */
+        
+        header {
+            background-color: #fff;
+            padding: 1.2rem 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #1f2a44;
+        }
+        
+        nav {
+            margin-top: 0.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            transition: 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        /* ---------- Hero Section ---------- */
+        
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #faf9f6, #f1eee7);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero h1 {
+            background: linear-gradient(90deg, #d4af37, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            color: #555;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        /* ---------- Content Section ---------- */
+        
+        .content {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3rem 3rem;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            animation: slideUp 1s ease;
+        }
+        
+        .content h2 {
+            color: #1f2a44;
+            margin-top: 2rem;
+            font-family: 'Playfair Display', serif;
+            border-left: 4px solid #d4af37;
+            padding-left: 10px;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .content p,
+        .content li {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .content ul {
+            padding-left: 25px;
+        }
+        /* ---------- Highlight Boxes ---------- */
+        
+        .policy-box {
+            background: #faf8f3;
+            border: 1px solid #e6dec8;
+            border-left: 5px solid #d4af37;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #333;
+        }
+        /* ---------- Footer ---------- */
+        
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            color: #555;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        /* ---------- Animations ---------- */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Velour Society</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shipping.html">Shipping</a>
+            <a href="returns.html">Returns</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Returns & Exchanges</h1>
+        <p>We believe every piece should bring you confidence and comfort. If not, we’re here to make your experience seamless and elegant.</p>
+    </section>
+
+    <section class="content">
+        <div class="policy-box">
+            Please initiate returns within <strong>7 days of delivery</strong>. The item must be unused, unworn, and in its original packaging.
+        </div>
+
+        <h2>Eligibility for Returns</h2>
+        <p>Your item is eligible for a return or exchange if it meets the following conditions:</p>
+        <ul>
+            <li>Item is unused, unworn, and unwashed.</li>
+            <li>Tags and original packaging are intact.</li>
+            <li>Proof of purchase is available.</li>
+        </ul>
+        <p><em>Note: Personalized or discounted items are not eligible for return.</em></p>
+
+        <h2>How to Initiate a Return</h2>
+        <p>Email our support team at <strong>support@veloursociety.com</strong> with your order number and reason for return. Our concierge will assist you through the process.</p>
+
+        <div class="policy-box">
+            Returns are processed within <strong>5–7 business days</strong> after we receive the item.
+        </div>
+
+        <h2>Refunds</h2>
+        <p>Once inspected and approved, refunds will be credited to your original payment method. You will receive an email confirmation once the refund is processed.</p>
+
+        <h2>Exchanges</h2>
+        <p>Need a different size or color? We’ll be happy to exchange it, subject to stock availability. Shipping charges for exchanges may apply.</p>
+
+        <h2>Damaged or Incorrect Items</h2>
+        <p>If your order arrives damaged or incorrect, please contact us within <strong>48 hours</strong> of delivery with photos. We’ll ensure a replacement or full refund.</p>
+
+        <div class="policy-box">
+            Your satisfaction is the essence of our brand. Every Velour Society experience should feel as refined as our collection.
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Velour Society. Crafted with elegance and intent.</p>
+    </footer>
+
+</body>
+
+</html>
