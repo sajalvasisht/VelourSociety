@@ -725,3 +725,37 @@ body.panel-open .scroll-container {
     gap: 1.5rem;
   }
 }
+/* Styling for error messages */
+.error-message {
+    color: #ff4d4f; /* Bright red for errors */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 5px; /* slight indentation */
+}
+
+/* Styling for input fields with errors */
+.input-error {
+    border: 1px solid #ff4d4f !important; /* Highlight border */
+    box-shadow: 0 0 5px rgba(255, 77, 79, 0.5); /* Subtle glow */
+}
+
+/*
+  Add CSS to manage the visibility of the forms based on the radio buttons
+  since your HTML structure uses radio buttons for the form toggle.
+*/
+#login-form, #signup-form {
+    display: none; /* Initially hide both in CSS */
+}
+
+/* Show the form based on the checked radio button
+   (The JS above will handle this dynamically, but this is a good
+   CSS fallback/enhancement if you want pure CSS control) */
+/*
+#login-radio:checked ~ .panel-content #login-form {
+    display: block;
+}
+#signup-radio:checked ~ .panel-content #signup-form {
+    display: block;
+}
+*/
