@@ -124,3 +124,82 @@ document.addEventListener('DOMContentLoaded', () => {
         signupRadio.addEventListener('change', updatePanelView);
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const payNowButton = document.getElementById('pay-now-btn');
+    const paymentForm = document.getElementById('payment-details-form'); // Assume a form ID
+
+    if (payNowButton && paymentForm) {
+        payNowButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop default form submission
+
+            // 1. Basic Client-Side Validation (e.g., check for valid card format, required fields)
+            if (!validatePaymentFields()) {
+                alert('Please fill in all required payment details correctly.');
+                return;
+            }
+
+            // 2. Simulate API Call to create a token (This is where a real API script would run)
+            console.log('Attempting to process payment...');
+            
+            // In a REAL integration (e.g., Stripe, Adyen):
+            // The API's JavaScript library (e.g., Stripe.js) would securely collect
+            // card data from the input fields, send it directly to the API server,
+            // and return a secure, non-sensitive 'token' or 'payment ID'.
+            
+            const simulatedToken = 'tok_velour_1A2B3C4D5E6F';
+
+            // 3. Simulate Sending Token to Your Server (The crucial step)
+            // This is the XHR/Fetch request your frontend sends to your backend.
+            processPaymentOnServer(simulatedToken)
+                .then(response => {
+                    if (response.success) {
+                        alert('✅ Payment Successful! Redirecting to confirmation page...');
+                        window.location.href = 'order-confirmation.html'; // Redirect on success
+                    } else {
+                        alert(`❌ Payment Failed: ${response.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Network or Server Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        });
+    }
+
+    // --- Helper Functions ---
+
+    function validatePaymentFields() {
+        // Implement robust client-side validation for card number, expiry, CVC, etc.
+        // For simulation, we'll just check if the form is generally filled.
+        const cardNumber = document.getElementById('card-number').value.trim();
+        const expiryDate = document.getElementById('expiry-date').value.trim();
+        
+        return cardNumber.length > 15 && expiryDate.length > 3; // Basic check
+    }
+
+    function processPaymentOnServer(token) {
+        // This function SIMULATES the API call to your own backend server.
+        // Your server would receive the 'token' and then communicate with the
+        // Payment Gateway (Stripe/PayPal) server to finalize the charge.
+        
+        return new Promise((resolve) => {
+            // Simulate a 2-second server processing delay
+            setTimeout(() => {
+                // Simulate success 80% of the time, failure 20%
+                const isSuccess = Math.random() < 0.8; 
+
+                if (isSuccess) {
+                    resolve({
+                        success: true,
+                        orderId: 'VRS' + Math.floor(Math.random() * 100000)
+                    });
+                } else {
+                    resolve({
+                        success: false,
+                        message: 'Card declined by bank or insufficient funds.'
+                    });
+                }
+            }, 2000); // 2 seconds delay
+        });
+    }
+});
