@@ -1,4 +1,21 @@
+function handleCredentialResponse(response) {
+  console.log("Encoded ID Token: " + response.credential);
+  const base64Url = response.credential.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const payload = JSON.parse(atob(base64));
+
+  console.log("User Email:", payload.email);
+  console.log("User Name:", payload.name);
+  console.log("User Picture:", payload.picture);
+  
+  alert(`Welcome, ${payload.name}! You are signed in with Google (Simulated)`);
+  
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // API endpoint for your local server
+    const USER_API_URL = 'http://localhost:3000/users';
+
     // 1. Get references to the forms
     const loginForm = document.querySelector('#login-form form');
     const signupForm = document.querySelector('#signup-form form');
@@ -64,48 +81,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Attach event listeners to forms
     if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            // Stop the form from submitting normally
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!validateForm(loginForm, false)) return;
 
-            if (validateForm(loginForm, false)) {
-                // Form is valid!
-                console.log('Login form submitted successfully!');
-                // Here you would typically send data to a server using fetch() or XMLHttpRequest
-                // For demonstration, we'll just log and could optionally submit: e.currentTarget.submit();
-                alert('Login Successful (Simulated)'); 
-                loginForm.reset(); // Clear form after 'submission'
-            } else {
-                console.log('Login form validation failed.');
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                // Check for user with matching email AND password using json-server query
+                const response = await fetch(`${USER_API_URL}?email=${email}&password=${password}`);
+                const users = await response.json();
+
+                if (users.length > 0) {
+                    console.log('Login successful for user:', users[0].fullName);
+                    alert(`Login Successful! Welcome back, ${users[0].fullName}. (Simulated)`);
+                    loginForm.reset();
+                    // Close panel or redirect here if needed
+                } else {
+                    alert('Login Failed: Invalid email or password.');
+                }
+            } catch (error) {
+                console.error('Error attempting login:', error);
+                alert('An error occurred during login. Check if json-server is running.');
             }
         });
     }
 
     if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
-            // Stop the form from submitting normally
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!validateForm(signupForm, true)) return;
 
-            if (validateForm(signupForm, true)) {
-                // Form is valid!
-                console.log('Signup form submitted successfully!');
-                // Here you would typically send data to a server
-                alert('Sign Up Successful (Simulated)');
-                signupForm.reset(); // Clear form after 'submission'
-            } else {
-                console.log('Signup form validation failed.');
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            
+            try {
+                // 1. Check if user already exists
+                const checkResponse = await fetch(`${USER_API_URL}?email=${email}`);
+                const existingUsers = await checkResponse.json();
+
+                if (existingUsers.length > 0) {
+                    alert('Sign Up Failed: An account with this email already exists.');
+                    return;
+                }
+
+                // 2. Register new user
+                const newUserData = {
+                    fullName: name,
+                    email: email,
+                    password: password // In real app, this should be a hashed password
+                };
+
+                const registerResponse = await fetch(USER_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newUserData)
+                });
+                
+                if (registerResponse.ok) {
+                    const newUser = await registerResponse.json();
+                    console.log('Signup successful:', newUser);
+                    alert(`Sign Up Successful! Welcome, ${newUser.fullName}. (Simulated)`);
+                    signupForm.reset();
+                    // Optionally switch to login tab or close panel
+                } else {
+                     throw new Error('Registration failed on server.');
+                }
+            } catch (error) {
+                console.error('Error attempting signup:', error);
+                alert('An error occurred during sign up. Check if json-server is running.');
             }
         });
     }
 
-    // --- Panel Toggle UI Logic (For better user experience) ---
+    // --- Panel Toggle UI Logic (Unchanged) ---
     const loginRadio = document.getElementById('login-radio');
     const signupRadio = document.getElementById('signup-radio');
     const loginContent = document.getElementById('login-form');
     const signupContent = document.getElementById('signup-form');
 
     if (loginRadio && signupRadio && loginContent && signupContent) {
-        // Function to update which form is visible
         const updatePanelView = () => {
             if (loginRadio.checked) {
                 loginContent.style.display = 'block';
@@ -116,13 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Initial setup
         updatePanelView();
-
-        // Listen for changes on the radio buttons
         loginRadio.addEventListener('change', updatePanelView);
         signupRadio.addEventListener('change', updatePanelView);
     }
+    // ... Existing event listener for payment processing remains below
 });
 document.addEventListener('DOMContentLoaded', () => {
     const payNowButton = document.getElementById('pay-now-btn');
