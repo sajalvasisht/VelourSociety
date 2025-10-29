@@ -1,0 +1,341 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullName": "Velour Admin",
+      "email": "admin@veloursociety.com",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "fullName": "Jane Doe",
+      "email": "jane.doe@test.com",
+      "password": "testpassword"
+    },
+    {
+      "id": "02da",
+      "fullName": "salaj kumar",
+      "email": "salaj0754.becse24@chitkara.edu.in",
+      "password": "SalajSudharJao"
+    }
+  ],
+  "men": [
+    {
+      "id": "101",
+      "name": "Big Pony 20th Anniversary Polo Shirt",
+      "price": 450,
+      "description": "Premium cotton blend polo shirt",
+      "image": "men_collection/Polo.jpg"
+    },
+    {
+      "id": "102",
+      "name": "Crest Cotton-Cashmere Sweatshirt",
+      "price": 320,
+      "description": "Soft cotton-cashmere blend sweatshirt",
+      "image": "men_collection/Crest.jpg"
+    },
+    {
+      "id": "103",
+      "name": "Tailored Suit",
+      "price": 780,
+      "description": "Custom-fit suit for formal occasions",
+      "image": "photos/Tailored_suit.png"
+    },
+    {
+      "id": "104",
+      "name": "Denim Jeans",
+      "price": 95,
+      "description": "Premium denim with perfect fit and comfort",
+      "image": "photos/Denim_jeans.png"
+    },
+    {
+      "id": "105",
+      "name": "Formal Trousers",
+      "price": 150,
+      "description": "Elegant trousers for business and formal events",
+      "image": "photos/Formal_trouser.png"
+    },
+    {
+      "id": "106",
+      "name": "Velvet Evening Blazer",
+      "price": 690,
+      "description": "Luxury velvet blazer with satin lapels",
+      "image": "men_collection/velvet.png"
+    },
+    {
+      "id": "107",
+      "name": "Pure Silk Dress Shirt",
+      "price": 420,
+      "description": "Elegant silk shirt with classic tailored cut",
+      "image": "men_collection/silkdress.png"
+    },
+    {
+      "id": "108",
+      "name": "Italian Cashmere Overcoat",
+      "price": 1100,
+      "description": "Handcrafted overcoat made from 100% Italian cashmere",
+      "image": "men_collection/overcoat.png"
+    },
+    {
+      "id": "109",
+      "name": "Lightweight Linen Blazer",
+      "price": 350,
+      "description": "Breathable luxury linen perfect for summer events",
+      "image": "men_collection/Blazer.png"
+    },
+    {
+      "id": "110",
+      "name": "Italian Lambskin Leather Jacket",
+      "price": 950,
+      "description": "Soft lambskin jacket with modern silhouette",
+      "image": "men_collection/Leatherjacket.png"
+    },
+    {
+      "id": "111",
+      "name": "British Tweed Suit",
+      "price": 820,
+      "description": "Classic heritage tweed suit for refined style",
+      "image": "men_collection/Britishsuit.png"
+    },
+    {
+      "id": "112",
+      "name": "Cashmere Crewneck Sweater",
+      "price": 400,
+      "description": "Ultra-soft 100% cashmere knit sweater",
+      "image": "men_collection/sweater.png"
+    },
+    {
+      "id": "113",
+      "name": "Tailored Stretch Chinos",
+      "price": 230,
+      "description": "Luxury stretch cotton chinos with slim fit",
+      "image": "men_collection/TailoredChinos.png"
+    },
+    {
+      "id": "114",
+      "name": "Cashmere-Blend Luxury Hoodie",
+      "price": 480,
+      "description": "Soft cashmere-blend hoodie with refined minimal design",
+      "image": "men_collection/LuxuaryHoodie.png"
+    },
+    {
+      "id": "115",
+      "name": "Italian Suede Loafers",
+      "price": 600,
+      "description": "Handmade Italian loafers with cushioned sole",
+      "image": "men_collection/Loafers.png"
+    },
+    {
+      "id": "116",
+      "name": "Double-Breasted Trench Coat",
+      "price": 870,
+      "description": "Timeless trench coat crafted from premium wool blend",
+      "image": "men_collection/TrenchCoat.png"
+    }
+  ],
+  "women": [
+    {
+      "id": "201",
+      "name": "Elegant Evening Dress",
+      "price": 520,
+      "description": "Stunning evening gown for special occasions",
+      "image": "photos/Elegant_evening_dress.png"
+    },
+    {
+      "id": "202",
+      "name": "Cashmere Sweater",
+      "price": 280,
+      "description": "Luxurious cashmere sweater for ultimate comfort",
+      "image": "photos/cashmere_sweater.png"
+    },
+    {
+      "id": "203",
+      "name": "Silk Blouse",
+      "price": 180,
+      "description": "Elegant silk blouse for professional wear",
+      "image": "photos/silk_blouse.png"
+    },
+    {
+      "id": "204",
+      "name": "Designer Skirt",
+      "price": 220,
+      "description": "Chic designer skirt for everyday elegance",
+      "image": "photos/Designer_skirt.png"
+    },
+    {
+      "id": "205",
+      "name": "Leather Handbag",
+      "price": 450,
+      "description": "Premium leather handbag with elegant design",
+      "image": "photos/Leather_handbag.png"
+    },
+    {
+      "id": "206",
+      "name": "Linen Jumpsuit",
+      "price": 320,
+      "description": "Comfortable linen jumpsuit for summer days",
+      "image": "photos/Linen_jumpsuit.png"
+    },
+    {
+      "id": "207",
+      "name": "Velvet Gown",
+      "price": 600,
+      "description": "Luxurious velvet gown for grand occasions",
+      "image": "photos/female.jpeg"
+    },
+    {
+      "id": "208",
+      "name": "Classic Trench Coat",
+      "price": 480,
+      "description": "Timeless trench coat for all seasons",
+      "image": "photos/Linen_jumpsuit.png"
+    },
+    {
+      "id": "209",
+      "name": "Floral Maxi Dress",
+      "price": 350,
+      "description": "Soft floral maxi dress for casual elegance",
+      "image": "photos/product3.jpg"
+    },
+    {
+      "id": "210",
+      "name": "Wool Blazer",
+      "price": 410,
+      "description": "Structured wool blazer for smart layering",
+      "image": "men_collection/Blazer.png"
+    },
+    {
+      "id": "211",
+      "name": "Satin Slip Dress",
+      "price": 390,
+      "description": "Elegant satin slip dress for evening wear",
+      "image": "men_collection/silkdress.png"
+    },
+    {
+      "id": "212",
+      "name": "Pleated Midi Skirt",
+      "price": 260,
+      "description": "Graceful pleated midi skirt in neutral tones",
+      "image": "photos/Designer_skirt.png"
+    },
+    {
+      "id": "213",
+      "name": "Tweed Jacket",
+      "price": 430,
+      "description": "Chic tweed jacket with a vintage flair",
+      "image": "men_collection/Britishsuit.png"
+    },
+    {
+      "id": "214",
+      "name": "Boho Embroidered Dress",
+      "price": 340,
+      "description": "Free-spirited embroidered dress for sunny days",
+      "image": "photos/Linen_collection.jpg"
+    },
+    {
+      "id": "215",
+      "name": "Denim Jacket",
+      "price": 220,
+      "description": "Classic denim jacket for casual styling",
+      "image": "photos/Leather_jacket.jpg"
+    },
+    {
+      "id": "216",
+      "name": "Knitted Cardigan",
+      "price": 270,
+      "description": "Soft knitted cardigan for cozy layering",
+      "image": "photos/cashmere_sweater.png"
+    }
+  ],
+  "accessories": [
+    {
+      "id": "301",
+      "name": "Pheasant-Print Wool Pocket Square",
+      "price": 90,
+      "description": "Luxurious silk scarf with elegant patterns",
+      "image": "accessories/pocket.jpeg"
+    },
+    {
+      "id": "302",
+      "name": "Leather Belt Gift Set",
+      "price": 110,
+      "description": "Premium leather belt with classic buckle",
+      "image": "accessories/gift_set.jpg"
+    },
+    {
+      "id": "303",
+      "name": "Coach X Peanuts Card Case",
+      "price": 250,
+      "description": "Elegant gold cufflinks for formal wear",
+      "image": "accessories/coachXpeanut.jpg"
+    },
+    {
+      "id": "304",
+      "name": "Leather Cleaner",
+      "price": 320,
+      "description": "Stylish sunglasses with UV protection",
+      "image": "accessories/Leather_cleaner.jpg"
+    },
+    {
+      "id": "305",
+      "name": "Stall",
+      "price": 180,
+      "description": "Classic wool fedora for timeless style",
+      "image": "accessories/stall.jpg"
+    },
+    {
+      "id": "306",
+      "name": "Imagination Perfume",
+      "price": 140,
+      "description": "Soft leather gloves for cold weather",
+      "image": "accessories/perfume.jpg"
+    }
+  ],
+  "arrivals": [
+    {
+      "id": "401",
+      "name": "Men's Polo T-shirt",
+      "price": 35,
+      "old_price": 45,
+      "discount": "22% OFF",
+      "description": "Men's Polo T-shirt",
+      "image": "https://www.aristobrat.in/cdn/shop/files/LuxuryPolo_Caramel_Greekmeander1.jpg?v=1717830489&width=1080"
+    },
+    {
+      "id": "402",
+      "name": "Aviator Sunglasses",
+      "price": 49,
+      "old_price": 70,
+      "discount": "30% OFF",
+      "description": "Aviator Sunglasses",
+      "image": "https://faadu.in/public/products/player-sunglasses-06.webp"
+    },
+    {
+      "id": "403",
+      "name": "Women's Velvet Gown",
+      "price": 165,
+      "old_price": 220,
+      "discount": "25% OFF",
+      "description": "Women's Velvet Gown",
+      "image": "https://i.pinimg.com/1200x/18/1a/e9/181ae99078351b36124a74bc99438188.jpg"
+    },
+    {
+      "id": "404",
+      "name": "Women's Luxury Watch",
+      "price": 90,
+      "old_price": 110,
+      "discount": "18% OFF",
+      "description": "Women's Luxury Watch",
+      "image": "https://static.helioswatchstore.com/media/blog/428%20x%20390%20fossil.png"
+    },
+    {
+      "id": "405",
+      "name": "Leather Shoulder Bag",
+      "price": 245,
+      "old_price": 350,
+      "discount": "20% OFF",
+      "description": "Leather Shoulder Bag",
+      "image": "https://sarmanluxury.in/cdn/shop/files/rn-image_picker_lib_temp_3140a2e3-24c8-4fe6-8690-d7208c8b2db1.jpg?v=1712840520"
+    }
+  ]
+}
