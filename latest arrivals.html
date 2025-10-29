@@ -312,78 +312,8 @@
     <p>Discover the pieces that define this season's elegance.</p>
   </section>
 
-  <section class="arrivals-container">
-
-    <div class="arrival-card">
-      <div class="image-container">
-        <span class="sale-badge">22% OFF</span>
-        <img src="https://www.aristobrat.in/cdn/shop/files/LuxuryPolo_Caramel_Greekmeander1.jpg?v=1717830489&width=1080" alt="Men's Polo T-shirt" />
-      </div>
-      <div class="arrival-info">
-        <h2>Men's Polo T-shirt</h2>
-        <div class="price-container">
-          <span class="old-price">$45</span><span class="price">$35</span>
-        </div>
-        <button class="add-to-cart" data-name="Men's Polo T-shirt" data-price="35">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="arrival-card">
-      <div class="image-container">
-        <span class="sale-badge">30% OFF</span>
-        <img src="https://faadu.in/public/products/player-sunglasses-06.webp" alt="Aviator Sunglasses" />
-      </div>
-      <div class="arrival-info">
-        <h2>Aviator Sunglasses</h2>
-        <div class="price-container">
-          <span class="old-price">$70</span><span class="price">$49</span>
-        </div>
-        <button class="add-to-cart" data-name="Aviator Sunglasses" data-price="49">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="arrival-card">
-      <div class="image-container">
-        <span class="sale-badge">25% OFF</span>
-        <img src="https://i.pinimg.com/1200x/18/1a/e9/181ae99078351b36124a74bc99438188.jpg" alt="Women's Velvet Gown" />
-      </div>
-      <div class="arrival-info">
-        <h2>Women's Velvet Gown</h2>
-        <div class="price-container">
-          <span class="old-price">$220</span><span class="price">$165</span>
-        </div>
-        <button class="add-to-cart" data-name="Women's Velvet Gown" data-price="165">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="arrival-card">
-      <div class="image-container">
-        <span class="sale-badge">18% OFF</span>
-        <img src="https://static.helioswatchstore.com/media/blog/428%20x%20390%20fossil.png" alt="Women's Luxury Watch" />
-      </div>
-      <div class="arrival-info">
-        <h2>Women's Luxury Watch</h2>
-        <div class="price-container">
-          <span class="old-price">$110</span><span class="price">$90</span>
-        </div>
-        <button class="add-to-cart" data-name="Women's Luxury Watch" data-price="90">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="arrival-card">
-      <div class="image-container">
-        <span class="sale-badge">20% OFF</span>
-        <img src="https://sarmanluxury.in/cdn/shop/files/rn-image_picker_lib_temp_3140a2e3-24c8-4fe6-8690-d7208c8b2db1.jpg?v=1712840520" alt="Leather Shoulder Bag" />
-      </div>
-      <div class="arrival-info">
-        <h2>Leather Shoulder Bag</h2>
-        <div class="price-container">
-          <span class="old-price">$350</span><span class="price">$245</span>
-        </div>
-        <button class="add-to-cart" data-name="Leather Shoulder Bag" data-price="245">Add to Cart</button>
-      </div>
-    </div>
-  </section>
+  <section class="arrivals-container" id="arrivals-container">
+    </section>
 
   <footer class="enhanced-footer" id="page-footer">
     <div class="footer-grid">
@@ -444,66 +374,108 @@
       localStorage.setItem('cart', JSON.stringify(cart));
       return item ? item.qty : 0;
     }
+    
+    const API_BASE_URL = 'http://localhost:3000';
+    const container = document.getElementById('arrivals-container');
 
-    document.querySelectorAll('.arrival-card').forEach(card => {
-      const btn = card.querySelector('.add-to-cart');
-      const name = btn.dataset.name;
-      const price = parseFloat(btn.dataset.price);
-      const image = card.querySelector('img').src;
-      const details = card.querySelector('h2').textContent;
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingItem = cart.find(i => i.name === name);
+    function renderArrivalCard(product) {
+      return `
+        <div class="arrival-card">
+          <div class="image-container">
+            <span class="sale-badge">${product.discount}</span>
+            <img src="${product.image}" alt="${product.name}" />
+          </div>
+          <div class="arrival-info">
+            <h2>${product.name}</h2>
+            <div class="price-container">
+              <span class="old-price">$${product.old_price}</span><span class="price">$${product.price}</span>
+            </div>
+            <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}" data-details="${product.description}">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
 
-      function createQtyWrapper(qty) {
-        const qtyWrapper = document.createElement('div');
-        qtyWrapper.className = 'quantity-selector';
-        qtyWrapper.innerHTML = `
-          <button class="decrease">–</button>
-          <span class="qty">${qty}</span>
-          <button class="increase">+</button>
-        `;
-        return qtyWrapper;
+    async function loadProducts() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/arrivals`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const products = await response.json();
+        
+        container.innerHTML = products.map(renderArrivalCard).join('');
+        
+        // Re-initialize event listeners after new HTML is loaded
+        initEventListeners();
+
+      } catch (error) {
+        console.error('Error fetching arrivals products:', error);
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">Failed to load products. Is the local server running?</p>';
       }
+    }
+    
+    function initEventListeners() {
+      document.querySelectorAll('.arrival-card').forEach(card => {
+        const btn = card.querySelector('.add-to-cart');
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+        const image = btn.dataset.image;
+        const details = btn.dataset.details;
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(i => i.name === name);
 
-      if (existingItem) {
-        const qtyWrapper = createQtyWrapper(existingItem.qty);
-        btn.replaceWith(qtyWrapper);
+        function createQtyWrapper(qty) {
+          const qtyWrapper = document.createElement('div');
+          qtyWrapper.className = 'quantity-selector';
+          qtyWrapper.innerHTML = `
+            <button class="decrease">–</button>
+            <span class="qty">${qty}</span>
+            <button class="increase">+</button>
+          `;
+          return qtyWrapper;
+        }
 
-        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, 1);
-          qtyWrapper.querySelector('.qty').textContent = newQty;
-        });
+        if (existingItem) {
+          const qtyWrapper = createQtyWrapper(existingItem.qty);
+          btn.replaceWith(qtyWrapper);
 
-        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, -1);
-          if (newQty > 0) qtyWrapper.querySelector('.qty').textContent = newQty;
-          else {
-            qtyWrapper.replaceWith(btn);
-            btn.textContent = 'Add to Cart';
-          }
-        });
-      }
+          qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, 1);
+            qtyWrapper.querySelector('.qty').textContent = newQty;
+          });
 
-      btn.addEventListener('click', () => {
-        const currentQty = updateCart(name, price, image, details);
-        const qtyWrapper = createQtyWrapper(currentQty);
-        btn.replaceWith(qtyWrapper);
+          qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, -1);
+            if (newQty > 0) qtyWrapper.querySelector('.qty').textContent = newQty;
+            else {
+              qtyWrapper.replaceWith(btn);
+              btn.textContent = 'Add to Cart';
+            }
+          });
+        }
 
-        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, 1);
-          qtyWrapper.querySelector('.qty').textContent = newQty;
-        });
+        btn.addEventListener('click', () => {
+          const currentQty = updateCart(name, price, image, details);
+          const qtyWrapper = createQtyWrapper(currentQty);
+          btn.replaceWith(qtyWrapper);
 
-        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, -1);
-          if (newQty > 0) qtyWrapper.querySelector('.qty').textContent = newQty;
-          else {
-            qtyWrapper.replaceWith(btn);
-            btn.textContent = 'Add to Cart';
-          }
+          qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, 1);
+            qtyWrapper.querySelector('.qty').textContent = newQty;
+          });
+
+          qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, -1);
+            if (newQty > 0) qtyWrapper.querySelector('.qty').textContent = newQty;
+            else {
+              qtyWrapper.replaceWith(btn);
+              btn.textContent = 'Add to Cart';
+            }
+          });
         });
       });
-    });
+    }
+
+    loadProducts();
   </script>
 </body>
 
