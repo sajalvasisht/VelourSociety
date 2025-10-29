@@ -224,6 +224,9 @@
           div.classList.add('cart-item');
           div.dataset.price = item.price;
 
+          // The image path must correctly reference the image location relative to cart.html
+          // Since the dynamic script stores the correct relative path in localStorage, we can use it directly.
+          // Note: If the images are served from a web server, the path stored in the cart must be correct relative to the cart.html file location.
           div.innerHTML = `
             <img src="${item.image}" alt="${item.name}">
             <div class="item-details">
