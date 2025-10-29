@@ -332,81 +332,8 @@
       <p>Elevate your look with our curated selection of luxury accessories</p>
     </div>
 
-    <div class="product-grid">
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/pocket.jpeg" alt="Pocket Square">
-        </div>
-        <div class="product-info">
-          <h3>Pheasant-Print Wool Pocket Square</h3>
-          <p>$90</p>
-          <div class="description">Luxurious silk scarf with elegant patterns</div>
-          <button class="add-to-cart" data-name="Pheasant-Print Wool Pocket Square" data-price="90">Add to Cart</button>
-        </div>
+    <div class="product-grid" id="product-grid">
       </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/gift_set.jpg" alt="Leather Belt Gift Set">
-        </div>
-        <div class="product-info">
-          <h3>Leather Belt Gift Set</h3>
-          <p>$110</p>
-          <div class="description">Premium leather belt with classic buckle</div>
-          <button class="add-to-cart" data-name="Leather Belt Gift Set" data-price="110">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/coachXpeanut.jpg" alt="Coach X Peanuts Card Case">
-        </div>
-        <div class="product-info">
-          <h3>Coach X Peanuts Card Case</h3>
-          <p>$250</p>
-          <div class="description">Elegant gold cufflinks for formal wear</div>
-          <button class="add-to-cart" data-name="Coach X Peanuts Card Case" data-price="250">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/Leather_cleaner.jpg" alt="Leather Cleaner">
-        </div>
-        <div class="product-info">
-          <h3>Leather Cleaner</h3>
-          <p>$320</p>
-          <div class="description">Stylish sunglasses with UV protection</div>
-          <button class="add-to-cart" data-name="Leather Cleaner" data-price="320">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/stall.jpg" alt="Stall">
-        </div>
-        <div class="product-info">
-          <h3>Stall</h3>
-          <p>$180</p>
-          <div class="description">Classic wool fedora for timeless style</div>
-          <button class="add-to-cart" data-name="Stall" data-price="180">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="accessories/perfume.jpg" alt="Imagination Perfume">
-        </div>
-        <div class="product-info">
-          <h3>Imagination Perfume</h3>
-          <p>$140</p>
-          <div class="description">Soft leather gloves for cold weather</div>
-          <button class="add-to-cart" data-name="Imagination Perfume" data-price="140">Add to Cart</button>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <footer>
@@ -432,70 +359,113 @@
       localStorage.setItem('cart', JSON.stringify(cart));
       return item ? item.qty : 0;
     }
+    
+    const API_BASE_URL = 'http://localhost:3000';
+    const container = document.getElementById('product-grid');
 
-    document.querySelectorAll('.product-card').forEach(card => {
-      const btn = card.querySelector('.add-to-cart');
-      const name = btn.dataset.name;
-      const price = parseFloat(btn.dataset.price);
-      const image = card.querySelector('img').src;
-      const details = card.querySelector('.description')?.textContent || '';
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingItem = cart.find(i => i.name === name);
+    function renderProductCard(product) {
+      // Adjusted image path to load correctly relative to accessories.html
+      const imagePath = product.image.startsWith('http') ? product.image : `../${product.image}`;
+      
+      return `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${imagePath}" alt="${product.name}">
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>$${product.price}</p>
+            <div class="description">${product.description}</div>
+            <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}" data-image="${imagePath}" data-details="${product.description}">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
 
-      function createQtyWrapper(qty) {
-        const qtyWrapper = document.createElement('div');
-        qtyWrapper.className = 'quantity-selector';
-        qtyWrapper.innerHTML = `
-          <button class="decrease">–</button>
-          <span class="qty">${qty}</span>
-          <button class="increase">+</button>
-        `;
-        return qtyWrapper;
+    async function loadProducts() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/accessories`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const products = await response.json();
+        
+        container.innerHTML = products.map(renderProductCard).join('');
+        
+        // Re-initialize event listeners after new HTML is loaded
+        initEventListeners();
+
+      } catch (error) {
+        console.error('Error fetching accessories products:', error);
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">Failed to load products. Is the local server running?</p>';
       }
+    }
 
-      if (existingItem) {
-        const qtyWrapper = createQtyWrapper(existingItem.qty);
-        btn.replaceWith(qtyWrapper);
+    function initEventListeners() {
+      document.querySelectorAll('.product-card').forEach(card => {
+        const btn = card.querySelector('.add-to-cart');
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+        const image = btn.dataset.image;
+        const details = btn.dataset.details;
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(i => i.name === name);
 
-        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, 1);
-          qtyWrapper.querySelector('.qty').textContent = newQty;
-        });
+        function createQtyWrapper(qty) {
+          const qtyWrapper = document.createElement('div');
+          qtyWrapper.className = 'quantity-selector';
+          qtyWrapper.innerHTML = `
+            <button class="decrease">–</button>
+            <span class="qty">${qty}</span>
+            <button class="increase">+</button>
+          `;
+          return qtyWrapper;
+        }
 
-        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, -1);
-          if (newQty > 0) {
+        if (existingItem) {
+          const qtyWrapper = createQtyWrapper(existingItem.qty);
+          btn.replaceWith(qtyWrapper);
+
+          qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, 1);
             qtyWrapper.querySelector('.qty').textContent = newQty;
-          } else {
-            qtyWrapper.replaceWith(btn);
-            btn.textContent = 'Add to Cart';
-          }
-        });
-      }
+          });
 
-      btn.addEventListener('click', () => {
-        const currentQty = updateCart(name, price, image, details);
+          qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, -1);
+            if (newQty > 0) {
+              qtyWrapper.querySelector('.qty').textContent = newQty;
+            } else {
+              qtyWrapper.replaceWith(btn);
+              btn.textContent = 'Add to Cart';
+            }
+          });
+        }
 
-        const qtyWrapper = createQtyWrapper(currentQty);
-        btn.replaceWith(qtyWrapper);
+        btn.addEventListener('click', () => {
+          const currentQty = updateCart(name, price, image, details);
 
-        qtyWrapper.querySelector('.increase').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, 1);
-          qtyWrapper.querySelector('.qty').textContent = newQty;
-        });
+          const qtyWrapper = createQtyWrapper(currentQty);
+          btn.replaceWith(qtyWrapper);
 
-        qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
-          const newQty = updateCart(name, price, image, details, -1);
-          if (newQty > 0) {
+          qtyWrapper.querySelector('.increase').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, 1);
             qtyWrapper.querySelector('.qty').textContent = newQty;
-          } else {
-            qtyWrapper.replaceWith(btn);
-            btn.textContent = 'Add to Cart';
-          }
+          });
+
+          qtyWrapper.querySelector('.decrease').addEventListener('click', () => {
+            const newQty = updateCart(name, price, image, details, -1);
+            if (newQty > 0) {
+              qtyWrapper.querySelector('.qty').textContent = newQty;
+            } else {
+              qtyWrapper.replaceWith(btn);
+              btn.textContent = 'Add to Cart';
+            }
+          });
         });
       });
-    });
-  </script>
+    }
+
+    loadProducts();
+</script>
 
 </body>
 </html>
